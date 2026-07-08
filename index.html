@@ -1,0 +1,5601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday Sayangkuuuu — A Letter From My Heart</title>
+  <meta name="description"
+    content="A special birthday surprise for the most amazing person in my life. July 19, 2026.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+   EFFECTS — scroll-reveal utilities
+   (Ambient bubbles/motes are rendered on a single canvas by particles.js
+   for performance — see js/particles.js — so no DOM-based effect classes
+   are needed here.)
+   ========================================================================== */
+
+    /* Section reveal helpers — used by smooth-scroll.js IntersectionObserver */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal--fade {
+      transform: none;
+    }
+
+    .reveal--scale {
+      transform: scale(0.92);
+    }
+
+    .reveal--scale.is-visible {
+      transform: scale(1);
+    }
+
+    .reveal--left {
+      transform: translateX(-40px);
+    }
+
+    .reveal--left.is-visible {
+      transform: translateX(0);
+    }
+
+    .reveal--right {
+      transform: translateX(40px);
+    }
+
+    .reveal--right.is-visible {
+      transform: translateX(0);
+    }
+
+    /* Stagger children utility (set --d on each child) */
+    .reveal-stagger>* {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+      transition-delay: var(--d, 0s);
+    }
+
+    .reveal-stagger.is-visible>* {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ==========================================================================
+   ENDING — final scene, surfacing into light
+   ========================================================================== */
+
+    .ending {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ending::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(253, 164, 175, 0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .ending__inner {
+      position: relative;
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ending__title {
+      font-size: var(--fs-display-xl);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: var(--c-foam);
+    }
+
+    .ending__title em {
+      font-style: italic;
+      color: var(--c-bio-gold);
+    }
+
+    .ending__message {
+      margin-top: var(--sp-4);
+      font-size: var(--fs-body-lg);
+      color: var(--c-foam-dim);
+      max-width: 54ch;
+    }
+
+    .ending__candles {
+      margin-top: var(--sp-6);
+      display: flex;
+      align-items: flex-end;
+      gap: var(--sp-3);
+      justify-content: center;
+      position: relative;
+    }
+
+    .ending__candles::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 24px;
+      background: radial-gradient(ellipse, rgba(253, 164, 175, 0.22), transparent 75%);
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .ending__candles.is-all-out::after {
+      opacity: 0;
+    }
+
+    .candle {
+      width: 14px;
+      height: 60px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #fff0f3, var(--c-bio-gold));
+      box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.12);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.4s ease;
+    }
+
+    .candle.is-out {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(253, 164, 175, 0.4));
+    }
+
+    .candle:nth-child(1) {
+      height: 48px;
+    }
+
+    .candle:nth-child(2) {
+      height: 62px;
+    }
+
+    .candle:nth-child(3) {
+      height: 70px;
+    }
+
+    .candle:nth-child(4) {
+      height: 58px;
+    }
+
+    .candle:nth-child(5) {
+      height: 50px;
+    }
+
+    .candle::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 16px;
+      background: radial-gradient(circle, #fff0f3, var(--c-bio-gold) 70%, transparent 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 1.4s ease-in-out infinite alternate;
+      filter: blur(0.3px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .candle.is-out::before {
+      opacity: 0;
+      transform: translateX(-50%) scale(0) rotate(0deg);
+    }
+
+    .candle:nth-child(2)::before {
+      animation-delay: 0.2s;
+    }
+
+    .candle:nth-child(3)::before {
+      animation-delay: 0.4s;
+    }
+
+    .candle:nth-child(4)::before {
+      animation-delay: 0.1s;
+    }
+
+    .candle:nth-child(5)::before {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: translateX(-50%) scale(1) rotate(-2deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateX(-50%) scale(1.1) rotate(2deg);
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateX(-50%) scale(0.95) rotate(-1deg);
+        opacity: 1;
+      }
+    }
+
+    .ending__signoff {
+      margin-top: var(--sp-6);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--c-bio-cyan-soft);
+      transition: opacity 0.4s ease;
+    }
+
+    .ending__replay {
+      margin-top: var(--sp-5);
+    }
+
+    .ending__footer-note {
+      margin-top: var(--sp-7);
+      font-family: var(--font-mono);
+      font-size: var(--fs-label);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--c-foam-faint);
+    }
+
+
+    /* ==========================================================================
+   GALLERY — uniform 3:4 portrait grid with lightbox
+   Every tile shares the exact same aspect ratio and dimensions so the
+   grid reads as a single, considered composition rather than a loose
+   assortment — closer to a gallery wall than a photo dump.
+   ========================================================================== */
+
+    .gallery__grid {
+      margin-top: var(--sp-6);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+    }
+
+    .gallery__item {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--c-panel-border);
+      box-shadow: var(--shadow-card);
+      opacity: 0;
+      transform: translateY(26px) scale(0.97);
+      transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out),
+        box-shadow 0.45s var(--ease-out), border-color 0.45s var(--ease-out);
+      transition-delay: var(--d, 0s);
+    }
+
+    .gallery__item.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .gallery__item.is-visible:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-panel-border-hover);
+      box-shadow: var(--shadow-card-hover);
+      transition-delay: 0s;
+    }
+
+    .gallery__media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out);
+    }
+
+    .gallery__item:hover .gallery__media {
+      transform: scale(1.06);
+    }
+
+    /* Placeholder visual shown until real photos are supplied — designed to
+   read as an intentional "plate" rather than a broken image. */
+    .gallery__placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      color: rgba(255, 245, 247, 0.55);
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .gallery__item.is-visible:hover .gallery__placeholder {
+      transform: scale(1.045);
+    }
+
+    .gallery__placeholder svg {
+      width: 15%;
+      height: 15%;
+      min-width: 26px;
+      min-height: 26px;
+      opacity: 0.6;
+    }
+
+    .gallery__placeholder-index {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    .gallery__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--sp-4);
+      background: linear-gradient(to top, rgba(14, 6, 16, 0.92) 0%, rgba(14, 6, 16, 0.32) 48%, transparent 78%);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    }
+
+    .gallery__item:hover .gallery__overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery__caption {
+      font-size: 0.88rem;
+      color: var(--c-foam);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    /* ---- Responsive grid: 4 / 3 / 2 columns across desktop, tablet, mobile ---- */
+    @media (max-width: 1024px) {
+      .gallery__grid {
+        gap: var(--sp-3);
+      }
+    }
+
+    @media (max-width: 880px) {
+      .gallery__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-2);
+      }
+
+      .gallery__placeholder svg {
+        min-width: 22px;
+        min-height: 22px;
+      }
+
+      .gallery__overlay {
+        padding: var(--sp-3);
+      }
+
+      .gallery__caption {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .gallery__overlay {
+        opacity: 1;
+        transform: none;
+        background: linear-gradient(to top, rgba(14, 6, 16, 0.85) 0%, transparent 60%);
+      }
+    }
+
+    /* ---- Gallery after-message block ---- */
+    .gallery__message {
+      margin-top: var(--sp-6);
+      padding: var(--sp-5) var(--sp-5);
+      background: var(--c-panel);
+      border: 1px solid var(--c-panel-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: var(--panel-blur);
+      -webkit-backdrop-filter: var(--panel-blur);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+
+    .gallery__message-text {
+      font-size: var(--fs-body-lg);
+      line-height: var(--lh-relaxed);
+      color: var(--c-foam-dim);
+      max-width: 60ch;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    .gallery__message-emoji {
+      display: block;
+      margin-top: var(--sp-3);
+      font-size: 1.3rem;
+      font-style: normal;
+    }
+
+    @media (max-width: 600px) {
+      .gallery__message {
+        padding: var(--sp-4) var(--sp-3);
+      }
+    }
+
+    /* ==========================================================================
+   LIGHTBOX
+   ========================================================================== */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-overlay);
+      background: rgba(14, 6, 16, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s var(--ease-soft), visibility 0.5s var(--ease-soft);
+      padding: var(--gutter);
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox__frame {
+      position: relative;
+      width: min(420px, 78vw);
+      background: var(--c-panel-strong);
+      border: 1px solid var(--c-panel-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-3);
+      transform: scale(0.94);
+      box-shadow: var(--shadow-panel);
+      transition: transform 0.5s var(--ease-soft);
+    }
+
+    .lightbox.is-open .lightbox__frame {
+      transform: scale(1);
+    }
+
+    .lightbox__media-wrap {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--c-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox__media-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox__media-wrap .gallery__placeholder svg {
+      width: 22%;
+      height: 22%;
+    }
+
+    .lightbox__caption {
+      margin-top: var(--sp-3);
+      text-align: center;
+      color: var(--c-foam-dim);
+      font-size: 0.95rem;
+      padding: 0 var(--sp-2);
+    }
+
+    /* Nav/close buttons anchor to the full overlay (not the frame) so their
+   position stays safely on-screen at any frame width or viewport size. */
+    .lightbox__close,
+    .lightbox__nav {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--c-line-strong);
+      color: var(--c-foam);
+      backdrop-filter: blur(8px);
+      transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      z-index: 1;
+    }
+
+    .lightbox__close:hover,
+    .lightbox__nav:hover {
+      background: rgba(244, 114, 182, 0.25);
+      border-color: var(--c-bio-cyan);
+    }
+
+    .lightbox__close {
+      top: clamp(14px, 3vw, 32px);
+      right: clamp(14px, 3vw, 32px);
+    }
+
+    .lightbox__close:hover {
+      transform: scale(1.07);
+    }
+
+    .lightbox__nav--prev {
+      left: clamp(10px, 3vw, 32px);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox__nav--next {
+      right: clamp(10px, 3vw, 32px);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox__nav--prev:hover {
+      transform: translateY(-50%) scale(1.07);
+    }
+
+    .lightbox__nav--next:hover {
+      transform: translateY(-50%) scale(1.07);
+    }
+
+    @media (max-width: 600px) {
+      .lightbox {
+        padding: var(--sp-3);
+      }
+
+      .lightbox__frame {
+        width: min(320px, 84vw);
+      }
+
+      .lightbox__close,
+      .lightbox__nav {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
+
+    /* ==========================================================================
+   ANIMATIONS — shared keyframes & progress chrome
+   ========================================================================== */
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--c-bio-cyan), var(--c-bio-gold));
+      box-shadow: 0 0 12px rgba(244, 114, 182, 0.5);
+      z-index: calc(var(--z-nav) + 1);
+      transition: width 0.1s linear;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatY {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateX(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateX(10px) rotate(3deg);
+      }
+
+      100% {
+        transform: translateX(0) rotate(0deg);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    .animate-fade-up {
+      animation: fadeUp var(--dur-slow) var(--ease-out) forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn var(--dur-slow) var(--ease-out) forwards;
+    }
+
+    /* Skip-to-content link, accessible but invisible until focused */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--c-bio-cyan);
+      color: var(--c-abyss);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      z-index: 9999;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      left: var(--sp-3);
+      top: var(--sp-3);
+    }
+
+
+    /* ==========================================================================
+   HERO
+   ========================================================================== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + var(--sp-6)) var(--gutter) var(--sp-7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__content {
+      position: relative;
+      max-width: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__eyebrow {
+      opacity: 0;
+    }
+
+    .hero__title {
+      margin-top: var(--sp-4);
+      font-size: var(--fs-display-xl);
+      font-weight: 600;
+      line-height: 1.04;
+      color: var(--c-foam);
+    }
+
+    .hero__title .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.08em;
+    }
+
+    .hero__title .line span {
+      display: inline-block;
+      transform: translateY(115%);
+      opacity: 0;
+    }
+
+    .hero__title.is-revealed .line span {
+      transform: translateY(0);
+      opacity: 1;
+      transition: transform 1.1s var(--ease-out) 0.15s, opacity 1.1s var(--ease-out) 0.15s;
+    }
+
+    .hero__title.is-revealed .line:nth-child(2) span {
+      transition-delay: 0.32s;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      font-weight: 500;
+      background: linear-gradient(120deg, var(--c-bio-cyan-soft), var(--c-bio-gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero__subtitle {
+      margin-top: var(--sp-4);
+      font-size: var(--fs-body-lg);
+      color: var(--c-foam-dim);
+      max-width: 52ch;
+      opacity: 0;
+    }
+
+    .hero__name {
+      color: var(--c-bio-gold);
+      font-weight: 600;
+    }
+
+    .hero__actions {
+      margin-top: var(--sp-6);
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+    }
+
+    .hero__scroll-cue {
+      position: absolute;
+      bottom: var(--sp-5);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      color: var(--c-foam-faint);
+      opacity: 0;
+    }
+
+    .hero__scroll-cue span {
+      font-family: var(--font-mono);
+      font-size: var(--fs-label);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+    }
+
+    .hero__scroll-cue .mouse {
+      width: 22px;
+      height: 36px;
+      border: 1.5px solid var(--c-line-strong);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .hero__scroll-cue .mouse::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 7px;
+      border-radius: 2px;
+      background: var(--c-bio-cyan);
+      animation: scrollDot 1.8s var(--ease-in-out) infinite;
+    }
+
+    @keyframes scrollDot {
+      0% {
+        opacity: 1;
+        top: 6px;
+      }
+
+      70% {
+        opacity: 0;
+        top: 18px;
+      }
+
+      100% {
+        opacity: 0;
+        top: 6px;
+      }
+    }
+
+    /* Decorative caustic light blobs in hero */
+    .hero__glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .hero__glow--1 {
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.32), transparent 70%);
+      top: 6%;
+      left: 6%;
+      animation: glowDrift1 16s var(--ease-in-out) infinite;
+    }
+
+    .hero__glow--2 {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(253, 164, 175, 0.2), transparent 70%);
+      bottom: 2%;
+      right: 8%;
+      animation: glowDrift2 19s var(--ease-in-out) infinite;
+    }
+
+    @keyframes glowDrift1 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(22px, 18px) scale(1.07);
+      }
+    }
+
+    @keyframes glowDrift2 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-18px, -16px) scale(1.05);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero__glow {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: calc(var(--nav-h) + var(--sp-4));
+      }
+
+      .hero__actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .hero__actions .cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+
+    /* ==========================================================================
+   LAYOUT — page structure, containers, section scaffolding
+   ========================================================================== */
+
+    /* Fixed full-viewport ambient layer — particles + vignette only.
+   The actual depth-gradient now lives on <body> so it spans the true
+   document height and the descent feels continuous while scrolling,
+   rather than resetting at every viewport-height. */
+    .ocean-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-bg);
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .ocean-backdrop__glows,
+    .ocean-backdrop__rays,
+    .ocean-backdrop__particles,
+    .ocean-backdrop__vignette {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ambient glow blobs — soft color throughout the whole scroll, not just
+   the hero, so the page never reads as visually flat/empty once you're
+   past the opening section. */
+    .ocean-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      will-change: transform;
+    }
+
+    .ocean-glow--1 {
+      width: 30vw;
+      height: 30vw;
+      min-width: 360px;
+      min-height: 360px;
+      max-width: 560px;
+      max-height: 560px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.26), transparent 70%);
+      top: 6%;
+      left: -6%;
+      animation: oceanGlowDrift1 24s var(--ease-in-out) infinite;
+    }
+
+    .ocean-glow--2 {
+      width: 26vw;
+      height: 26vw;
+      min-width: 320px;
+      min-height: 320px;
+      max-width: 480px;
+      max-height: 480px;
+      background: radial-gradient(circle, rgba(253, 164, 175, 0.16), transparent 70%);
+      top: 42%;
+      right: -8%;
+      animation: oceanGlowDrift2 28s var(--ease-in-out) infinite;
+    }
+
+    .ocean-glow--3 {
+      width: 24vw;
+      height: 24vw;
+      min-width: 280px;
+      min-height: 280px;
+      max-width: 440px;
+      max-height: 440px;
+      background: radial-gradient(circle, rgba(249, 168, 212, 0.2), transparent 70%);
+      bottom: 6%;
+      left: 22%;
+      animation: oceanGlowDrift3 20s var(--ease-in-out) infinite;
+    }
+
+    @keyframes oceanGlowDrift1 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(3vw, 2vh) scale(1.08);
+      }
+    }
+
+    @keyframes oceanGlowDrift2 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-2.5vw, -2vh) scale(1.05);
+      }
+    }
+
+    @keyframes oceanGlowDrift3 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(2vw, -2.5vh) scale(1.06);
+      }
+    }
+
+    /* Light rays — faint, slow-drifting shafts for underwater depth. Kept
+   very subtle (low opacity, soft blur) so they read as atmosphere, never
+   as a distinct or "cheap" animated element competing with content. */
+    .ocean-backdrop__rays {
+      mix-blend-mode: screen;
+      opacity: 0.55;
+    }
+
+    .light-ray {
+      position: absolute;
+      top: -12%;
+      width: clamp(120px, 11vw, 200px);
+      height: 145%;
+      background: linear-gradient(180deg, rgba(255, 245, 247, 0.09), rgba(249, 168, 212, 0.03) 55%, transparent 80%);
+      filter: blur(22px);
+      transform-origin: top center;
+      will-change: transform, opacity;
+    }
+
+    .light-ray--1 {
+      left: 10%;
+      transform: rotate(7deg);
+      animation: rayDrift1 17s var(--ease-in-out) infinite;
+    }
+
+    .light-ray--2 {
+      left: 46%;
+      transform: rotate(-5deg);
+      animation: rayDrift2 21s var(--ease-in-out) infinite;
+    }
+
+    .light-ray--3 {
+      left: 80%;
+      transform: rotate(9deg);
+      animation: rayDrift3 19s var(--ease-in-out) infinite;
+    }
+
+    @keyframes rayDrift1 {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: rotate(7deg) translateX(0);
+      }
+
+      50% {
+        opacity: 0.75;
+        transform: rotate(5deg) translateX(12px);
+      }
+    }
+
+    @keyframes rayDrift2 {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        transform: rotate(-5deg) translateX(0);
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: rotate(-7deg) translateX(-10px);
+      }
+    }
+
+    @keyframes rayDrift3 {
+
+      0%,
+      100% {
+        opacity: 0.35;
+        transform: rotate(9deg) translateX(0);
+      }
+
+      50% {
+        opacity: 0.68;
+        transform: rotate(7deg) translateX(8px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .ocean-backdrop__rays {
+        display: none;
+      }
+
+      .ocean-glow {
+        filter: blur(50px);
+      }
+
+      .ocean-glow--1,
+      .ocean-glow--2,
+      .ocean-glow--3 {
+        min-width: 220px;
+        min-height: 220px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .ocean-glow,
+      .light-ray {
+        animation: none;
+      }
+    }
+
+    .ocean-backdrop__vignette {
+      background: radial-gradient(ellipse at 50% 0%, transparent 0%, rgba(0, 0, 0, 0.28) 72%, rgba(0, 0, 0, 0.5) 100%);
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      z-index: var(--z-content);
+    }
+
+    .section {
+      position: relative;
+      padding: var(--section-pad-y) var(--gutter);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Content sections (lists/grids) flow with their natural height instead of
+   being forced to fill the viewport — prevents oversized empty padding on
+   tall screens and keeps rhythm driven by actual content. */
+    .memories,
+    .gallery,
+    .wishes {
+      min-height: 0;
+    }
+
+    .section__inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .section__inner--narrow {
+      max-width: var(--content-narrow);
+    }
+
+    .section-header {
+      margin-bottom: var(--sp-6);
+      max-width: 640px;
+    }
+
+    .section-header--center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-header--center .section-lede {
+      margin-inline: auto;
+    }
+
+    /* Depth marker rail — fixed at viewport edge, shows scroll-depth like a dive computer */
+    .depth-rail {
+      position: fixed;
+      right: clamp(0.8rem, 2.5vw, 2.2rem);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: var(--z-nav);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      pointer-events: none;
+    }
+
+    .depth-rail__track {
+      position: relative;
+      width: 2px;
+      height: 220px;
+      background: var(--c-line);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .depth-rail__fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--c-bio-cyan), var(--c-bio-gold));
+      border-radius: 2px;
+      transition: height 0.15s linear;
+    }
+
+    .depth-rail__value {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--c-bio-cyan-soft);
+      letter-spacing: 0.05em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    @media (max-width: 880px) {
+      .depth-rail {
+        display: none;
+      }
+    }
+
+    /* Generic divider / wave seam between sections — translucent fill so it
+   blends naturally with the body's depth-gradient at any scroll position,
+   rather than relying on a hardcoded color matched to one exact spot. */
+    .seam {
+      position: relative;
+      height: clamp(40px, 8vw, 90px);
+      margin-top: calc(-1 * clamp(20px, 4vw, 45px));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .seam svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
+    .seam__fill {
+      fill: var(--c-seam-mid);
+    }
+
+    .seam__crest {
+      stroke: rgba(249, 168, 212, 0.4);
+      stroke-width: 1.5;
+      filter: drop-shadow(0 0 4px rgba(244, 114, 182, 0.35));
+    }
+
+    .seam--mid .seam__fill {
+      fill: var(--c-seam-mid);
+    }
+
+    .seam--deep .seam__fill {
+      fill: var(--c-seam-deep);
+    }
+
+    .seam--abyss .seam__fill {
+      fill: var(--c-seam-abyss);
+    }
+
+    /* Utility containers */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: var(--sp-5);
+      }
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 1rem 1.85rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--c-bio-cyan), #2a9fc0);
+      color: var(--c-abyss);
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: 0.005em;
+      box-shadow: var(--shadow-glow-cyan), var(--shadow-card);
+      transition: transform 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out), background 0.3s var(--ease-out);
+    }
+
+    .cta-btn__icon {
+      transition: transform 0.35s var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow-cyan-lg), var(--shadow-card-hover);
+    }
+
+    .cta-btn:hover .cta-btn__icon {
+      transform: translateY(2px);
+    }
+
+    .cta-btn:active {
+      transform: translateY(-1px);
+      transition-duration: 0.15s;
+    }
+
+    .cta-btn--ghost {
+      background: transparent;
+      color: var(--c-foam);
+      border: 1px solid var(--c-line-strong);
+      box-shadow: none;
+    }
+
+    .cta-btn--ghost:hover {
+      border-color: var(--c-panel-border-hover);
+      color: var(--c-bio-cyan-soft);
+      background: rgba(249, 168, 212, 0.05);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+
+    .cta-btn--ghost:hover .cta-btn__icon {
+      transform: translateY(-2px);
+    }
+
+
+    /* ==========================================================================
+   LETTER — message in a bottle reveal
+   ========================================================================== */
+
+    .letter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .letter__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .letter__bottle-stage {
+      position: relative;
+      width: 220px;
+      height: 280px;
+      margin: var(--sp-6) auto 0;
+      cursor: pointer;
+    }
+
+    .letter__bottle-glow {
+      position: absolute;
+      inset: -20%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.22), transparent 70%);
+      filter: blur(20px);
+      animation: bottleGlowPulse 3.6s var(--ease-in-out) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes bottleGlowPulse {
+
+      0%,
+      100% {
+        opacity: 0.55;
+        transform: scale(0.94);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    .bottle {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 35px rgba(244, 114, 182, 0.25));
+      animation: bottleBob 4.5s var(--ease-in-out) infinite;
+      transition: filter 0.4s var(--ease-out);
+    }
+
+    @keyframes bottleBob {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translateY(-14px) rotate(2deg);
+      }
+    }
+
+    .letter__bottle-stage:hover .bottle,
+    .letter__bottle-stage:focus-visible .bottle {
+      filter: drop-shadow(0 16px 48px rgba(244, 114, 182, 0.5));
+    }
+
+    .letter__bottle-stage:focus-visible {
+      outline: none;
+    }
+
+    .letter__hint {
+      margin-top: var(--sp-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--c-foam-faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      gap: var(--sp-2);
+    }
+
+    .letter__hint svg {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      animation: hintBounce 1.8s var(--ease-in-out) infinite;
+    }
+
+    @keyframes hintBounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(3px);
+        opacity: 1;
+      }
+    }
+
+    .letter__bottle-stage.is-opened {
+      display: none;
+    }
+
+    /* Envelope / unrolled letter panel */
+    .letter__panel {
+      width: 100%;
+      margin-top: var(--sp-6);
+      background: linear-gradient(160deg, rgba(244, 249, 255, 0.05), var(--c-panel));
+      border: 1px solid var(--c-panel-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6) var(--sp-6);
+      backdrop-filter: var(--panel-blur);
+      -webkit-backdrop-filter: var(--panel-blur);
+      box-shadow: var(--shadow-panel);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: opacity 1s var(--ease-out), transform 1s var(--ease-out),
+        max-height 1s var(--ease-out), padding 1s var(--ease-out), margin 1s var(--ease-out);
+    }
+
+    .letter__panel.is-open {
+      opacity: 1;
+      max-height: 6000px;
+      transform: translateY(0);
+    }
+
+    .letter__salutation {
+      font-family: var(--font-display);
+      font-size: var(--fs-display-md);
+      color: var(--c-bio-gold);
+      font-style: italic;
+      letter-spacing: -0.01em;
+    }
+
+    .letter__body {
+      margin-top: var(--sp-4);
+      text-align: left;
+      font-size: var(--fs-body-lg);
+      line-height: var(--lh-relaxed);
+      color: var(--c-foam-dim);
+    }
+
+    .letter__body p {
+      margin-bottom: var(--sp-4);
+    }
+
+    .letter__body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Typewriter caret */
+    .letter__caret {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--c-bio-cyan);
+      vertical-align: text-bottom;
+      margin-left: 2px;
+      animation: caretBlink 1s steps(1) infinite;
+    }
+
+    @keyframes caretBlink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .letter__signature {
+      margin-top: var(--sp-5);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--c-line);
+      text-align: right;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--c-foam);
+    }
+
+    @media (max-width: 600px) {
+      .letter__panel {
+        padding: var(--sp-5) var(--sp-4);
+      }
+
+      .letter__bottle-stage {
+        width: 170px;
+        height: 220px;
+      }
+    }
+
+
+
+    /* ==========================================================================
+   LOADER
+   ========================================================================== */
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-loader);
+      background: var(--c-abyss);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-4);
+      transition: opacity 0.8s var(--ease-soft), visibility 0.8s var(--ease-soft);
+    }
+
+    .loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader__mark {
+      width: 64px;
+      height: 64px;
+      color: var(--c-bio-cyan);
+      filter: drop-shadow(0 0 24px rgba(244, 114, 182, 0.45));
+      animation: loaderFloat 2.2s var(--ease-in-out) infinite;
+    }
+
+    @keyframes loaderFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-10px) scale(1.05);
+      }
+    }
+
+    .loader__bar-track {
+      width: 200px;
+      height: 3px;
+      border-radius: var(--radius-pill);
+      background: var(--c-line);
+      overflow: hidden;
+    }
+
+    .loader__bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--c-bio-cyan), var(--c-bio-gold));
+      border-radius: var(--radius-pill);
+      transition: width 0.2s var(--ease-out);
+    }
+
+    .loader__label {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--c-foam-faint);
+    }
+
+    .loader__label span:first-child {
+      color: var(--c-bio-cyan-soft);
+      transition: opacity 0.18s var(--ease-out);
+    }
+
+    .loader__pct {
+      color: var(--c-foam-faint);
+      font-variant-numeric: tabular-nums;
+      opacity: 0.6;
+    }
+
+    .loader__pct::before {
+      content: '·';
+      margin-right: var(--sp-2);
+      opacity: 0.6;
+    }
+
+    /* ==========================================================================
+/* ==========================================================================
+   MUSIC PLAYER — Card style seperti Spotify (cover 3:4, title, artist)
+   ========================================================================== */
+
+    .music-player {
+      position: fixed;
+      bottom: var(--sp-4);
+      left: var(--sp-4);
+      z-index: var(--z-player);
+      width: 168px;
+    }
+
+    /* ── Card utama ──────────────────────────────────────────── */
+    .music-player__card {
+      background: rgba(6, 14, 26, 0.90);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 0 0.5px rgba(255, 255, 255, 0.04);
+      padding: 9px 9px 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+    }
+
+    .music-player__card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.65), var(--shadow-glow-cyan, 0 0 24px rgba(62, 200, 200, 0.12));
+    }
+
+    /* ── Cover foto 3:4 ──────────────────────────────────────── */
+    .music-player__cover-wrap {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      margin-bottom: 11px;
+      flex-shrink: 0;
+    }
+
+    .music-player__cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ── Title & Artist ──────────────────────────────────────── */
+    .music-player__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .music-player__title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #f2f2f2;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .music-player__artist {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--c-bio-cyan-soft, #7de2e2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── Progress bar ────────────────────────────────────────── */
+    .music-player__progress {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 2px;
+      cursor: pointer;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+
+    .music-player__progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f472b6, #1a8fb5);
+      border-radius: 2px;
+      transition: width 0.25s linear;
+    }
+
+    /* ── Waktu ───────────────────────────────────────────────── */
+    .music-player__time-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .music-player__time-cur,
+    .music-player__time-dur {
+      font-size: 0.58rem;
+      color: rgba(255, 255, 255, 0.38);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Controls: prev · play/pause · next ──────────────────── */
+    .music-player__bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      /* reset semua style dari loader-player yang bikin jadi pill */
+      position: static !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+      transition: none !important;
+    }
+
+    .music-player:hover .music-player__bar {
+      transform: none !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .music-player__prev,
+    .music-player__next {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.65);
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s, color 0.2s;
+    }
+
+    .music-player__prev:hover,
+    .music-player__next:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    .music-player__prev svg,
+    .music-player__next svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .music-player__toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f472b6, #1a7fa8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(244, 114, 182, 0.5);
+    }
+
+    .music-player__toggle:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 24px rgba(244, 114, 182, 0.7);
+    }
+
+    .music-player__toggle:active {
+      transform: scale(0.96);
+    }
+
+    .music-player__toggle svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* ── Equalizer bars (bawah tombol, saat playing) ────────── */
+    .music-player__bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 3px;
+      height: 14px;
+      margin-top: 10px;
+      opacity: 0.4;
+    }
+
+    .music-player.is-playing .music-player__bars {
+      opacity: 1;
+    }
+
+    .music-player__bars span {
+      width: 3px;
+      height: 100%;
+      background: var(--c-bio-cyan-soft, #7de2e2);
+      border-radius: 2px;
+      transform-origin: bottom;
+      animation: barBounce 1s ease-in-out infinite;
+    }
+
+    .music-player:not(.is-playing) .music-player__bars span {
+      animation-play-state: paused;
+    }
+
+    .music-player__bars span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .music-player__bars span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .music-player__bars span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes barBounce {
+
+      0%,
+      100% {
+        transform: scaleY(0.3);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+    }
+
+    /* Move mobile media query to bottom */
+
+    /* ── FAB toggle button ───────────────────────────────────── */
+    .music-player {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      width: 168px;
+    }
+
+    .music-player__fab {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(6, 14, 26, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-bio-cyan-soft, #7de2e2);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .music-player__fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(62, 200, 200, 0.2);
+    }
+
+    .music-player__fab svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Equalizer bars on FAB when playing */
+    .music-player__fab-bars {
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .music-player.is-playing .music-player__fab-bars {
+      opacity: 1;
+    }
+
+    .music-player__fab-bars span {
+      width: 2px;
+      height: 100%;
+      background: var(--c-bio-cyan-soft, #7de2e2);
+      border-radius: 1px;
+      transform-origin: bottom;
+      animation: barBounce 1s ease-in-out infinite;
+    }
+
+    .music-player__fab-bars span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .music-player__fab-bars span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .music-player__fab-bars span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .music-player:not(.is-playing) .music-player__fab-bars span {
+      animation-play-state: paused;
+    }
+
+    /* ── Card: tersembunyi by default, muncul saat .is-open ─── */
+    .music-player__card {
+      transform-origin: bottom left;
+      transform: scale(0.92) translateY(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      /* order: card muncul di atas FAB */
+      order: -1;
+    }
+
+    .music-player.is-open .music-player__card {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* FAB tint saat open */
+    .music-player.is-open .music-player__fab {
+      background: rgba(244, 114, 182, 0.25);
+      border-color: rgba(244, 114, 182, 0.4);
+      color: #f9a8d4;
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .music-player {
+        width: 130px;
+        bottom: var(--sp-3);
+        left: var(--sp-3);
+      }
+
+      .music-player__cover-wrap {
+        aspect-ratio: 1 / 1;
+        /* Make it square to save vertical space */
+        margin-bottom: 8px;
+      }
+
+      .music-player__title {
+        font-size: 0.72rem;
+      }
+
+      .music-player__card {
+        padding: 8px;
+        border-radius: 14px;
+      }
+
+      .music-player__toggle {
+        width: 32px;
+        height: 32px;
+      }
+
+      .music-player__prev,
+      .music-player__next {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+
+
+    /* ==========================================================================
+   MEMORIES — vertical chapter timeline
+   ========================================================================== */
+
+    .memories {
+      position: relative;
+    }
+
+    .memories__list {
+      position: relative;
+      margin-top: var(--sp-7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-7);
+    }
+
+    .memories__spine {
+      position: absolute;
+      left: 28px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--c-line);
+      border-radius: 2px;
+    }
+
+    .memories__spine-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--c-bio-cyan), var(--c-bio-gold));
+      border-radius: 2px;
+      transition: height 0.1s linear;
+    }
+
+    .memory-item {
+      position: relative;
+      padding-left: 78px;
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    .memory-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .memory-item__node {
+      position: absolute;
+      left: 14px;
+      top: 6px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--c-deep);
+      border: 2px solid var(--c-bio-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.5);
+      transition: box-shadow 0.4s var(--ease-out);
+    }
+
+    .memory-item.is-visible .memory-item__node {
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.45);
+      animation: nodePulse 2.4s var(--ease-out) 1;
+    }
+
+    @keyframes nodePulse {
+      0% {
+        box-shadow: 0 0 16px rgba(244, 114, 182, 0.45), 0 0 0 0 rgba(244, 114, 182, 0.5);
+      }
+
+      60% {
+        box-shadow: 0 0 16px rgba(244, 114, 182, 0.45), 0 0 0 14px rgba(244, 114, 182, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 16px rgba(244, 114, 182, 0.45), 0 0 0 0 rgba(244, 114, 182, 0);
+      }
+    }
+
+    .memory-item__node-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c-bio-cyan);
+    }
+
+    .memory-item__depth {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      color: var(--c-bio-cyan-soft);
+      letter-spacing: 0.05em;
+    }
+
+    .memory-item__card {
+      margin-top: var(--sp-2);
+      background: var(--c-panel);
+      border: 1px solid var(--c-panel-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      backdrop-filter: var(--panel-blur);
+      -webkit-backdrop-filter: var(--panel-blur);
+      box-shadow: var(--shadow-card);
+      max-width: 640px;
+      transition: transform 0.45s var(--ease-out), border-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+    }
+
+    .memory-item__card:hover {
+      transform: translateY(-4px);
+      border-color: var(--c-panel-border-hover);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .memory-item__year {
+      font-size: var(--fs-label);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--c-bio-gold);
+      font-weight: 600;
+    }
+
+    .memory-item__title {
+      margin-top: var(--sp-2);
+      font-size: var(--fs-display-md);
+      line-height: 1.15;
+      color: var(--c-foam);
+    }
+
+    .memory-item__text {
+      margin-top: var(--sp-3);
+      color: var(--c-foam-dim);
+      font-size: var(--fs-body);
+      line-height: var(--lh-relaxed);
+    }
+
+    @media (max-width: 600px) {
+
+      .memories__spine,
+      .memory-item__node {
+        left: 10px;
+      }
+
+      .memory-item {
+        padding-left: 52px;
+      }
+
+      .memory-item__node {
+        width: 24px;
+        height: 24px;
+        top: 4px;
+      }
+
+      .memory-item__card {
+        padding: var(--sp-4);
+      }
+
+      .memory-item__card:hover {
+        transform: none;
+      }
+    }
+
+
+    /* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      z-index: var(--z-nav);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--gutter);
+      background: linear-gradient(to bottom, rgba(14, 6, 16, 0.32), transparent);
+      transition: background 0.5s var(--ease-soft), backdrop-filter 0.5s var(--ease-soft), box-shadow 0.5s var(--ease-soft);
+    }
+
+    .navbar.is-scrolled {
+      background: rgba(4, 13, 24, 0.68);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      box-shadow: 0 1px 0 var(--c-line), 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar__inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--c-foam);
+      transition: opacity 0.3s var(--ease-out);
+    }
+
+    .navbar__brand:hover {
+      opacity: 0.8;
+    }
+
+    .navbar__brand-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      color: var(--c-bio-cyan);
+      transition: transform 0.4s var(--ease-out);
+    }
+
+    .navbar__brand:hover .navbar__brand-icon {
+      transform: translateY(-1px) scale(1.08);
+    }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-5);
+    }
+
+    .navbar__link {
+      position: relative;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--c-foam-dim);
+      padding: 0.35rem 0.1rem;
+      transition: color 0.3s var(--ease-out);
+    }
+
+    .navbar__link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--c-bio-cyan);
+      transition: width 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+    }
+
+    .navbar__link:hover {
+      color: var(--c-foam);
+    }
+
+    .navbar__link:hover::after {
+      width: 100%;
+    }
+
+    .navbar__link.is-active {
+      color: var(--c-bio-cyan-soft);
+    }
+
+    .navbar__link.is-active::after {
+      width: 100%;
+      box-shadow: 0 0 10px rgba(244, 114, 182, 0.7);
+    }
+
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+
+    .navbar__menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      align-items: center;
+      justify-content: center;
+      color: var(--c-foam);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--c-line);
+      transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+    }
+
+    .navbar__menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--c-line-strong);
+    }
+
+    .navbar__menu-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-overlay);
+      background: rgba(14, 6, 16, 0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-4);
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.02);
+      transition: opacity 0.45s var(--ease-soft), visibility 0.45s var(--ease-soft), transform 0.45s var(--ease-soft);
+    }
+
+    .nav-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .nav-drawer__link {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      color: var(--c-foam-dim);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: color 0.3s var(--ease-out), transform 0.3s var(--ease-out), opacity 0.45s var(--ease-out);
+      transition-delay: 0.08s;
+    }
+
+    .nav-drawer.is-open .nav-drawer__link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-drawer.is-open .nav-drawer__link:nth-child(2) {
+      transition-delay: 0.12s;
+    }
+
+    .nav-drawer.is-open .nav-drawer__link:nth-child(3) {
+      transition-delay: 0.16s;
+    }
+
+    .nav-drawer.is-open .nav-drawer__link:nth-child(4) {
+      transition-delay: 0.2s;
+    }
+
+    .nav-drawer.is-open .nav-drawer__link:nth-child(5) {
+      transition-delay: 0.24s;
+    }
+
+    .nav-drawer.is-open .nav-drawer__link:nth-child(6) {
+      transition-delay: 0.28s;
+    }
+
+    .nav-drawer__link:hover,
+    .nav-drawer__link.is-active {
+      color: var(--c-bio-cyan-soft);
+      transform: translateX(6px);
+    }
+
+    .nav-drawer__close {
+      position: absolute;
+      top: var(--sp-4);
+      right: var(--gutter);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-foam);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+
+    .nav-drawer__close:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 880px) {
+      .navbar__links {
+        display: none;
+      }
+
+      .navbar__menu-btn {
+        display: flex;
+      }
+    }
+
+
+    /* ==========================================================================
+   OCEAN DEPTH FX — additive atmosphere layers on top of the existing
+   ocean-backdrop (glows, rays, particle canvas, vignette stay untouched).
+   Adds: moving wave bands, caustic light shimmer, underwater fog.
+   Gated by perf-tier classes on <html> set by js/depth-fx.js, mirroring
+   the same reduced-motion philosophy already used in layout.css — effects
+   stay visible but static rather than disappearing entirely.
+   ========================================================================== */
+
+    /* ---- Waves: a banded "surface" read near the top of the fixed backdrop --- */
+    .ocean-backdrop__waves {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: clamp(140px, 20vw, 260px);
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    }
+
+    .wave-layer {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: waveBob ease-in-out infinite;
+    }
+
+    .wave-layer--1 {
+      top: -4%;
+      opacity: 0.5;
+      animation-duration: 7s;
+    }
+
+    .wave-layer--2 {
+      top: 4%;
+      opacity: 0.38;
+      animation-duration: 9s;
+      animation-direction: reverse;
+    }
+
+    .wave-layer--3 {
+      top: 14%;
+      opacity: 0.6;
+      animation-duration: 5.5s;
+    }
+
+    .wave-layer__scroll {
+      width: 200%;
+      height: 100%;
+      display: block;
+      animation: waveScroll linear infinite;
+      will-change: transform;
+    }
+
+    .wave-layer--1 .wave-layer__scroll {
+      animation-duration: 34s;
+    }
+
+    .wave-layer--2 .wave-layer__scroll {
+      animation-duration: 24s;
+      animation-direction: reverse;
+    }
+
+    .wave-layer--3 .wave-layer__scroll {
+      animation-duration: 17s;
+    }
+
+    .wave-layer__scroll svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes waveScroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes waveBob {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* ---- Caustics: shimmering light pattern, cheap radial-gradient tiling --- */
+    .ocean-backdrop__caustics {
+      position: absolute;
+      inset: -10%;
+      mix-blend-mode: screen;
+      opacity: 0.32;
+      background-image:
+        radial-gradient(circle at 18% 22%, rgba(249, 168, 212, 0.55) 0%, transparent 38%),
+        radial-gradient(circle at 62% 12%, rgba(253, 164, 175, 0.32) 0%, transparent 32%),
+        radial-gradient(circle at 40% 58%, rgba(249, 168, 212, 0.4) 0%, transparent 34%),
+        radial-gradient(circle at 82% 64%, rgba(244, 114, 182, 0.4) 0%, transparent 30%),
+        radial-gradient(circle at 10% 86%, rgba(253, 164, 175, 0.22) 0%, transparent 30%);
+      background-size: 140% 140%;
+      background-repeat: no-repeat;
+      animation: causticDrift 16s ease-in-out infinite alternate;
+      will-change: transform, background-position;
+    }
+
+    @keyframes causticDrift {
+      0% {
+        transform: translate(0, 0) scale(1);
+        background-position: 0% 0%;
+      }
+
+      50% {
+        transform: translate(-2%, 1.5%) scale(1.06);
+        background-position: 8% 6%;
+      }
+
+      100% {
+        transform: translate(2%, -1%) scale(1);
+        background-position: -6% 4%;
+      }
+    }
+
+    /* Subtle water-distortion: only on capable desktops, see perf gating below */
+    html.perf-high .ocean-backdrop__caustics,
+    html.perf-high .ocean-backdrop__waves {
+      filter: url(#oceanRipple);
+    }
+
+    /* ---- Lilies: floating glowing flowers ---- */
+    .ocean-lily {
+      position: absolute;
+      color: var(--c-bio-gold);
+      opacity: 0.35;
+      filter: drop-shadow(0 0 12px rgba(253, 164, 175, 0.4));
+      animation: floatLily 20s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .ocean-lily svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .ocean-lily--1 {
+      top: 15%;
+      left: 8%;
+      width: 44px;
+      height: 44px;
+      animation-duration: 24s;
+    }
+
+    .ocean-lily--2 {
+      top: 35%;
+      right: 12%;
+      width: 32px;
+      height: 32px;
+      animation-duration: 18s;
+      animation-delay: -3s;
+    }
+
+    .ocean-lily--3 {
+      top: 55%;
+      left: 18%;
+      width: 50px;
+      height: 50px;
+      animation-duration: 28s;
+      animation-delay: -7s;
+    }
+
+    .ocean-lily--4 {
+      bottom: 20%;
+      right: 22%;
+      width: 38px;
+      height: 38px;
+      animation-duration: 22s;
+      animation-delay: -2s;
+    }
+
+    .ocean-lily--5 {
+      bottom: 5%;
+      left: 35%;
+      width: 28px;
+      height: 28px;
+      animation-duration: 19s;
+      animation-delay: -9s;
+      color: var(--c-bio-cyan-soft);
+      filter: drop-shadow(0 0 12px rgba(249, 168, 212, 0.4));
+    }
+
+    .ocean-lily--6 {
+      top: 75%;
+      right: 8%;
+      width: 40px;
+      height: 40px;
+      animation-duration: 25s;
+      animation-delay: -11s;
+      color: var(--c-bio-cyan-soft);
+      filter: drop-shadow(0 0 12px rgba(249, 168, 212, 0.4));
+    }
+
+    @keyframes floatLily {
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(-5deg) scale(1);
+      }
+
+      50% {
+        transform: translate(15px, -35px) rotate(15deg) scale(1.08);
+      }
+    }
+
+    /* ---- Fog: soft, slow-drifting haze for depth ---- */
+    .ocean-backdrop__fog {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: screen;
+    }
+
+    .ocean-fog {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      will-change: transform;
+    }
+
+    .ocean-fog--1 {
+      width: 60vw;
+      height: 30vw;
+      min-width: 480px;
+      min-height: 240px;
+      top: 18%;
+      left: -10%;
+      background: radial-gradient(ellipse, rgba(244, 249, 255, 0.07), transparent 75%);
+      animation: fogDrift1 38s ease-in-out infinite;
+    }
+
+    .ocean-fog--2 {
+      width: 55vw;
+      height: 26vw;
+      min-width: 420px;
+      min-height: 200px;
+      bottom: 8%;
+      right: -8%;
+      background: radial-gradient(ellipse, rgba(249, 168, 212, 0.06), transparent 75%);
+      animation: fogDrift2 46s ease-in-out infinite;
+    }
+
+    @keyframes fogDrift1 {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(6vw, 2vh);
+      }
+    }
+
+    @keyframes fogDrift2 {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-5vw, -3vh);
+      }
+    }
+
+    /* ---- Performance gating ---- */
+    html.perf-low .wave-layer--3,
+    html.perf-low .ocean-fog--2 {
+      display: none;
+    }
+
+    html.perf-low .ocean-backdrop__caustics {
+      opacity: 0.18;
+      animation-duration: 26s;
+    }
+
+    @media (max-width: 720px) {
+      .ocean-backdrop__waves {
+        height: clamp(110px, 26vw, 170px);
+      }
+
+      .wave-layer--3 {
+        display: none;
+      }
+
+      .ocean-fog--2 {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce),
+    (update: slow) {
+
+      .wave-layer,
+      .wave-layer__scroll,
+      .ocean-backdrop__caustics,
+      .ocean-fog {
+        animation: none !important;
+      }
+
+      html.perf-high .ocean-backdrop__caustics,
+      html.perf-high .ocean-backdrop__waves {
+        filter: none;
+      }
+    }
+
+    html.reduced-motion .wave-layer,
+    html.reduced-motion .wave-layer__scroll,
+    html.reduced-motion .ocean-backdrop__caustics,
+    html.reduced-motion .ocean-fog {
+      animation: none !important;
+    }
+
+    html.reduced-motion .ocean-backdrop__caustics,
+    html.reduced-motion .ocean-backdrop__waves {
+      filter: none !important;
+    }
+
+    html.reduced-motion .ocean-lily {
+      animation: none !important;
+    }
+
+    /* ---- Lock the page in place while the PIN screen is up ---- */
+    html.pin-locked,
+    html.pin-locked body {
+      overflow: hidden;
+      height: 100%;
+    }
+
+
+
+    /* ==========================================================================
+   PIN LOCK SCREEN — premium gatekeeper, shown before the site is revealed.
+   Self-contained: doesn't touch any existing layout, only overlays it.
+   ========================================================================== */
+
+    .pin-lock {
+      position: fixed;
+      inset: 0;
+      z-index: var(--z-pin);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--sp-4);
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 8%, rgba(244, 114, 182, 0.16), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 90%, rgba(253, 164, 175, 0.08), transparent 65%),
+        linear-gradient(180deg, var(--c-surface) 0%, var(--c-mid) 45%, var(--c-deep) 75%, var(--c-abyss) 100%);
+      overflow: hidden;
+      transition: opacity 0.8s var(--ease-soft), filter 0.8s var(--ease-soft);
+    }
+
+    .pin-lock.is-unlocked {
+      opacity: 0;
+      filter: blur(14px);
+      pointer-events: none;
+    }
+
+    /* ---- Ambient atmosphere: glows + rising bubbles, scoped to this screen ---- */
+    .pin-lock__atmosphere {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .pin-lock__glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      will-change: transform;
+    }
+
+    .pin-lock__glow--1 {
+      width: 46vw;
+      height: 46vw;
+      max-width: 520px;
+      max-height: 520px;
+      top: -10%;
+      left: -8%;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.3), transparent 70%);
+      animation: pinGlowDrift 18s var(--ease-in-out) infinite;
+    }
+
+    .pin-lock__glow--2 {
+      width: 38vw;
+      height: 38vw;
+      max-width: 440px;
+      max-height: 440px;
+      bottom: -12%;
+      right: -6%;
+      background: radial-gradient(circle, rgba(253, 164, 175, 0.18), transparent 70%);
+      animation: pinGlowDrift 22s var(--ease-in-out) infinite reverse;
+    }
+
+    @keyframes pinGlowDrift {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(3vw, 2vh) scale(1.08);
+      }
+    }
+
+    .pin-lock__bubble {
+      position: absolute;
+      bottom: -10%;
+      left: var(--x, 50%);
+      width: var(--sz, 6px);
+      height: var(--sz, 6px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.85), rgba(249, 168, 212, 0.25) 70%, transparent 100%);
+      box-shadow: 0 0 6px rgba(249, 168, 212, 0.4);
+      animation: pinBubbleRise var(--sp, 10s) linear infinite;
+      animation-delay: var(--dl, 0s);
+      opacity: 0;
+    }
+
+    @keyframes pinBubbleRise {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 0.7;
+      }
+
+      92% {
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: translateY(-118vh) translateX(14px);
+        opacity: 0;
+      }
+    }
+
+    /* ---- Card ---- */
+    .pin-lock__card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--sp-6) var(--sp-5) var(--sp-5);
+      border-radius: var(--radius-lg);
+      background: var(--c-panel-strong);
+      border: 1px solid var(--c-panel-border);
+      backdrop-filter: var(--panel-blur);
+      -webkit-backdrop-filter: var(--panel-blur);
+      box-shadow: var(--shadow-panel), var(--shadow-glow-cyan);
+      animation: pinCardIn 0.9s var(--ease-out) both;
+    }
+
+    @keyframes pinCardIn {
+      from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .pin-lock__mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-bio-cyan);
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid var(--c-panel-border);
+      filter: drop-shadow(0 0 18px rgba(244, 114, 182, 0.4));
+      margin-bottom: var(--sp-3);
+      animation: pinMarkFloat 3.4s var(--ease-in-out) infinite;
+    }
+
+    .pin-lock__mark svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    @keyframes pinMarkFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .pin-lock__eyebrow {
+      margin-bottom: var(--sp-2);
+    }
+
+    .pin-lock__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
+      font-weight: 600;
+      color: var(--c-foam);
+      letter-spacing: -0.01em;
+      line-height: var(--lh-tight);
+    }
+
+    .pin-lock__subtitle {
+      margin-top: var(--sp-2);
+      margin-bottom: var(--sp-5);
+      font-size: var(--fs-body);
+      color: var(--c-foam-dim);
+      line-height: var(--lh-relaxed);
+      max-width: 30ch;
+    }
+
+    .pin-lock__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+      width: 100%;
+    }
+
+    /* ---- Digit boxes ---- */
+    .pin-lock__digits {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: clamp(8px, 2.4vw, 14px);
+    }
+
+    .pin-digit {
+      width: clamp(40px, 11vw, 52px);
+      height: clamp(46px, 12.5vw, 58px);
+      border-radius: var(--radius-sm);
+      background: rgba(244, 249, 255, 0.04);
+      border: 1.5px solid var(--c-line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), background 0.3s var(--ease-out);
+    }
+
+    .pin-digit__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--c-bio-cyan);
+      box-shadow: 0 0 10px rgba(244, 114, 182, 0.7);
+      transform: scale(0);
+      transition: transform 0.25s var(--ease-out);
+    }
+
+    .pin-digit.is-filled .pin-digit__dot {
+      transform: scale(1);
+    }
+
+    .pin-digit.is-active {
+      border-color: var(--c-panel-border-hover);
+      box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.14), var(--shadow-glow-cyan);
+      background: rgba(244, 114, 182, 0.06);
+    }
+
+    .pin-lock__hidden-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: transparent;
+      caret-color: transparent;
+      font-size: 16px;
+      /* prevents iOS auto-zoom on focus */
+      z-index: 2;
+      cursor: default;
+    }
+
+    /* Error state — shake + red glow pulse */
+    .pin-lock__card.is-error {
+      animation: pinShake 0.5s var(--ease-in-out);
+    }
+
+    @keyframes pinShake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-10px);
+      }
+
+      40% {
+        transform: translateX(8px);
+      }
+
+      60% {
+        transform: translateX(-6px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    .pin-lock__card.is-error {
+      border-color: rgba(255, 110, 95, 0.55);
+      box-shadow: var(--shadow-panel), 0 0 46px rgba(255, 90, 75, 0.4);
+    }
+
+    .pin-lock__card.is-error .pin-digit {
+      border-color: rgba(255, 110, 95, 0.5);
+      background: rgba(255, 90, 75, 0.06);
+    }
+
+    .pin-lock__card.is-error .pin-digit__dot {
+      background: var(--c-coral);
+      box-shadow: 0 0 10px rgba(255, 138, 122, 0.7);
+    }
+
+    /* Success state — soft cyan/gold glow, then the screen fades via .is-unlocked */
+    .pin-lock__card.is-success {
+      border-color: rgba(249, 168, 212, 0.6);
+      box-shadow: var(--shadow-panel), 0 0 60px rgba(253, 164, 175, 0.35), var(--shadow-glow-cyan-lg);
+      animation: pinSuccessPulse 0.9s var(--ease-soft);
+    }
+
+    @keyframes pinSuccessPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      35% {
+        transform: scale(1.025);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pin-lock__card.is-success .pin-digit {
+      border-color: var(--c-bio-cyan);
+    }
+
+    .pin-lock__card.is-success .pin-digit__dot {
+      background: linear-gradient(135deg, var(--c-bio-cyan), var(--c-bio-gold));
+      box-shadow: 0 0 14px rgba(253, 164, 175, 0.7);
+    }
+
+    /* ---- Submit button (visual sibling of .cta-btn, sized for this card) ---- */
+    .pin-lock__submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--c-bio-cyan), #2a9fc0);
+      color: var(--c-abyss);
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-glow-cyan), var(--shadow-card);
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+    }
+
+    .pin-lock__submit:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-cyan-lg), var(--shadow-card-hover);
+    }
+
+    .pin-lock__submit:active {
+      transform: translateY(0);
+    }
+
+    .pin-lock__submit svg {
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .pin-lock__submit:hover svg {
+      transform: translateX(2px);
+    }
+
+    /* ---- Error notification (no browser alerts — inline, elegant, accessible) ---- */
+    .pin-lock__error {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: var(--sp-3);
+      margin-bottom: calc(-1 * var(--sp-2));
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 90, 75, 0.12);
+      border: 1px solid rgba(255, 110, 95, 0.35);
+      color: #ffb3a8;
+      font-size: 0.84rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+    }
+
+    .pin-lock__error.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pin-lock__error svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+      .pin-lock__card {
+        padding: var(--sp-5) var(--sp-4) var(--sp-4);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .pin-lock,
+      .pin-lock__card,
+      .pin-lock__glow,
+      .pin-lock__bubble,
+      .pin-lock__mark {
+        animation: none !important;
+        transition: opacity 0.4s ease !important;
+      }
+
+      .pin-lock__card.is-error {
+        transform: none;
+      }
+    }
+
+
+
+    /* ==========================================================================
+   BASE — reset, global element defaults
+   ========================================================================== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: auto;
+      /* JS-driven smooth scroll handles this; avoid double-smoothing */
+      background: var(--c-abyss);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg,
+          var(--c-surface) 0%,
+          var(--c-mid) 16%,
+          var(--c-deep) 48%,
+          var(--c-abyss) 76%,
+          var(--c-abyss) 100%);
+      color: var(--c-foam);
+      font-family: var(--font-body);
+      font-size: var(--fs-body);
+      line-height: var(--lh-relaxed);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img,
+    picture,
+    svg,
+    canvas,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: var(--lh-tight);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    input,
+    textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    ::selection {
+      background: var(--c-bio-cyan);
+      color: var(--c-abyss);
+    }
+
+    /* Scrollbar — subtle, oceanic */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--c-abyss);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--c-bio-cyan), var(--c-mid));
+      border-radius: var(--radius-pill);
+    }
+
+    html {
+      scrollbar-color: var(--c-bio-cyan) var(--c-abyss);
+      scrollbar-width: thin;
+    }
+
+    /* Focus visibility — accessibility floor */
+    :focus-visible {
+      outline: 2px solid var(--c-bio-cyan);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Respect reduced motion globally */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .no-scroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+
+    /* ==========================================================================
+   RESPONSIVE — cross-cutting breakpoint adjustments
+   (component-specific responsive rules live alongside each component;
+   this file covers global/shared adjustments only)
+   ========================================================================== */
+
+    @media (max-width: 1024px) {
+      :root {
+        --gutter: clamp(1.25rem, 4vw, 3rem);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        min-height: auto;
+        padding-top: calc(var(--nav-h) + var(--sp-5));
+        padding-bottom: var(--sp-6);
+      }
+
+      .section-header {
+        margin-bottom: var(--sp-5);
+      }
+
+      /* Hero no longer reserves a full viewport, so the absolutely-positioned
+     scroll cue can't claim its own space without risking overlap with the
+     CTAs above it — retire it below this breakpoint (mobile/small tablet
+     users don't need the hint anyway). */
+      .hero__scroll-cue {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-lede {
+        max-width: none;
+      }
+    }
+
+    /* Backdrop-filter blur is expensive on low-power/mobile GPUs (especially
+   Safari) — ease it back on small screens where panels are also smaller
+   and the visual difference is negligible. */
+    @media (max-width: 600px),
+    (max-height: 600px) {
+      :root {
+        --panel-blur: blur(12px) saturate(130%);
+      }
+    }
+
+    /* Landscape phones: shrink min-heights so content isn't cropped */
+    @media (max-height: 480px) and (orientation: landscape) {
+
+      .hero,
+      .ending {
+        min-height: auto;
+        padding-top: calc(var(--nav-h) + var(--sp-4));
+        padding-bottom: var(--sp-5);
+      }
+
+      .hero__scroll-cue {
+        display: none;
+      }
+    }
+
+    /* Coarse pointer (touch): remove hover-only affordances, enlarge tap targets */
+    @media (hover: none) and (pointer: coarse) {
+      .gallery__overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(14, 6, 16, 0.78) 0%, transparent 65%);
+      }
+
+      .navbar__link,
+      .nav-drawer__link {
+        padding: 0.5rem 0;
+      }
+    }
+
+    /* High-density / large desktop: cap line lengths from stretching too wide */
+    @media (min-width: 1600px) {
+      :root {
+        --content-max: 1320px;
+      }
+    }
+
+
+    /* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-family: var(--font-mono);
+      font-size: var(--fs-label);
+      font-weight: 500;
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--c-bio-cyan-soft);
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--c-bio-cyan), transparent);
+      opacity: 0.85;
+    }
+
+    .section-title {
+      font-size: var(--fs-display-lg);
+      font-weight: 600;
+      line-height: 1.06;
+      color: var(--c-foam);
+      margin-top: var(--sp-3);
+      letter-spacing: -0.015em;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--c-bio-gold);
+      font-weight: 500;
+    }
+
+    .section-lede {
+      font-size: var(--fs-body-lg);
+      color: var(--c-foam-dim);
+      max-width: 44ch;
+      line-height: var(--lh-relaxed);
+      margin-top: var(--sp-3);
+    }
+
+    .depth-label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-caption);
+      letter-spacing: var(--tracking-wide);
+      color: var(--c-bio-cyan-soft);
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .section-lede code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      color: var(--c-bio-cyan-soft);
+      background: rgba(249, 168, 212, 0.1);
+      border: 1px solid rgba(249, 168, 212, 0.16);
+      border-radius: 6px;
+      padding: 0.1em 0.45em;
+    }
+
+    .text-gold {
+      color: var(--c-bio-gold);
+    }
+
+    .text-cyan {
+      color: var(--c-bio-cyan);
+    }
+
+    .text-dim {
+      color: var(--c-foam-dim);
+    }
+
+
+    /* ==========================================================================
+   DESIGN TOKENS — Ocean Birthday
+   A descent into a bioluminescent deep sea at twilight.
+   ========================================================================== */
+
+    :root {
+      /* ---- Color: depth gradient — romantic pink midnight ---- */
+      --c-surface: #3d1a2e;
+      /* near-surface rose */
+      --c-mid: #2a1024;
+      /* mid depth */
+      --c-deep: #1a0a18;
+      /* deep plum */
+      --c-abyss: #0e0610;
+      /* darkest night */
+
+      --c-bio-cyan: #f472b6;
+      /* pink accent (replaces cyan) */
+      --c-bio-cyan-soft: #f9a8d4;
+      --c-bio-gold: #fda4af;
+      /* warm rose accent (replaces gold) */
+      --c-bio-gold-soft: #fecdd3;
+      --c-coral: #fb7185;
+      /* vibrant pink accent */
+
+      --c-foam: #fff5f7;
+      /* primary text on dark */
+      --c-foam-dim: rgba(255, 245, 247, 0.72);
+      --c-foam-faint: rgba(255, 245, 247, 0.45);
+      --c-line: rgba(255, 245, 247, 0.12);
+      --c-line-strong: rgba(255, 245, 247, 0.22);
+
+      /* ---- Glass / panel surfaces ---- */
+      --c-panel: rgba(61, 26, 46, 0.46);
+      --c-panel-strong: rgba(30, 12, 28, 0.82);
+      --c-panel-border: rgba(244, 114, 182, 0.16);
+      --c-panel-border-hover: rgba(244, 114, 182, 0.4);
+      --panel-blur: blur(20px) saturate(150%);
+
+      /* ---- Seam dividers ---- */
+      --c-seam-mid: rgba(42, 16, 36, 0.62);
+      --c-seam-deep: rgba(26, 10, 24, 0.68);
+      --c-seam-abyss: rgba(14, 6, 16, 0.74);
+
+      /* ---- Typography ---- */
+      --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+      --font-body: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+      --fs-display-xl: clamp(2.8rem, 8vw, 7rem);
+      --fs-display-lg: clamp(2.2rem, 5.5vw, 4.5rem);
+      --fs-display-md: clamp(1.6rem, 3.6vw, 2.8rem);
+      --fs-body-lg: clamp(1.1rem, 1.6vw, 1.35rem);
+      --fs-body: clamp(0.98rem, 1.1vw, 1.08rem);
+      --fs-caption: 0.78rem;
+      --fs-label: 0.72rem;
+
+      --lh-tight: 1.08;
+      --lh-snug: 1.3;
+      --lh-relaxed: 1.7;
+
+      --tracking-wide: 0.18em;
+      --tracking-wider: 0.28em;
+
+      /* ---- Spacing scale ---- */
+      --sp-1: 0.4rem;
+      --sp-2: 0.8rem;
+      --sp-3: 1.2rem;
+      --sp-4: 1.8rem;
+      --sp-5: 2.8rem;
+      --sp-6: 4.2rem;
+      --sp-7: 6.5rem;
+      --sp-8: 9.5rem;
+
+      --section-pad-y: clamp(5rem, 12vh, 9rem);
+      --gutter: clamp(1.25rem, 5vw, 4rem);
+      --content-max: 1180px;
+      --content-narrow: 760px;
+
+      /* ---- Radii & shadows ---- */
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-pill: 999px;
+
+      --shadow-glow-cyan: 0 0 40px rgba(244, 114, 182, 0.25);
+      --shadow-glow-cyan-lg: 0 0 60px rgba(244, 114, 182, 0.38);
+      --shadow-glow-gold: 0 0 50px rgba(253, 164, 175, 0.2);
+      --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.18), 0 1px 1px rgba(0, 0, 0, 0.12);
+      --shadow-card-hover: 0 22px 48px rgba(0, 0, 0, 0.4), 0 0 32px rgba(244, 114, 182, 0.14);
+      --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 245, 247, 0.06) inset;
+      --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+      /* ---- Motion ---- */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+      --dur-fast: 0.25s;
+      --dur-base: 0.6s;
+      --dur-slow: 1.1s;
+
+      --nav-h: 76px;
+      --z-bg: 0;
+      --z-content: 10;
+      --z-nav: 100;
+      --z-player: 90;
+      --z-overlay: 200;
+      --z-loader: 1000;
+      --z-pin: 10000;
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --nav-h: 64px;
+        --section-pad-y: clamp(3.5rem, 10vh, 6rem);
+      }
+    }
+
+
+    /* ==========================================================================
+   WISHES — floating wish cards
+   ========================================================================== */
+
+    .wishes__grid {
+      margin-top: var(--sp-6);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+    }
+
+    .wish-card {
+      position: relative;
+      padding: var(--sp-5) var(--sp-4) var(--sp-4);
+      border-radius: var(--radius-lg);
+      background: var(--c-panel);
+      border: 1px solid var(--c-panel-border);
+      backdrop-filter: var(--panel-blur);
+      -webkit-backdrop-filter: var(--panel-blur);
+      box-shadow: var(--shadow-card);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out),
+        border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+      transition-delay: var(--d, 0s);
+    }
+
+    .wish-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wish-card.is-visible:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-panel-border-hover);
+      box-shadow: var(--shadow-card-hover);
+      transition-delay: 0s;
+    }
+
+    .wish-card__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(244, 114, 182, 0.1);
+      border: 1px solid var(--c-panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-bio-gold);
+      transition: border-color 0.4s var(--ease-out);
+    }
+
+    .wish-card.is-visible:hover .wish-card__icon {
+      border-color: rgba(253, 164, 175, 0.4);
+    }
+
+    .wish-card__icon svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .wish-card__text {
+      margin-top: var(--sp-4);
+      font-size: 1rem;
+      color: var(--c-foam-dim);
+      line-height: var(--lh-relaxed);
+    }
+
+    .wish-card__quote-mark {
+      position: absolute;
+      top: var(--sp-3);
+      right: var(--sp-4);
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: rgba(253, 164, 175, 0.13);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    @media (max-width: 880px) {
+      .wishes__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--sp-3);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wishes__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wish-card {
+        padding: var(--sp-4);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Shared SVG filter for the subtle water-distortion effect on the
+     caustics/wave layers (high-perf desktop only — see ocean-depth-fx.css) -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <filter id="oceanRipple" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise">
+          <animate attributeName="baseFrequency" dur="16s" values="0.010 0.016;0.016 0.022;0.010 0.016"
+            repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ============================= PIN LOCK SCREEN ============================= -->
+  <div class="pin-lock" id="pinLock" role="dialog" aria-modal="true" aria-label="Enter your secret code">
+    <div class="pin-lock__atmosphere" aria-hidden="true">
+      <span class="pin-lock__glow pin-lock__glow--1"></span>
+      <span class="pin-lock__glow pin-lock__glow--2"></span>
+      <span class="pin-lock__bubble" style="--x:8%;  --sz:7px; --sp:11s;   --dl:0s"></span>
+      <span class="pin-lock__bubble" style="--x:18%; --sz:4px; --sp:9s;    --dl:1.2s"></span>
+      <span class="pin-lock__bubble" style="--x:30%; --sz:9px; --sp:13s;   --dl:2.4s"></span>
+      <span class="pin-lock__bubble" style="--x:46%; --sz:5px; --sp:8s;    --dl:0.6s"></span>
+      <span class="pin-lock__bubble" style="--x:58%; --sz:8px; --sp:12s;   --dl:3.1s"></span>
+      <span class="pin-lock__bubble" style="--x:70%; --sz:4px; --sp:10s;   --dl:1.8s"></span>
+      <span class="pin-lock__bubble" style="--x:82%; --sz:6px; --sp:14s;   --dl:4s"></span>
+      <span class="pin-lock__bubble" style="--x:92%; --sz:5px; --sp:9.5s;  --dl:2s"></span>
+    </div>
+
+    <div class="pin-lock__card">
+      <div class="pin-lock__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M12 3c4.5 0 8 4 8 9a8 8 0 01-16 0c0-5 3.5-9 8-9z" />
+          <path d="M9 11.5l1.6 1.6L15 9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <span class="eyebrow pin-lock__eyebrow">For your eyes only, my love</span>
+      <h1 class="pin-lock__title">Enter Your Secret Code</h1>
+      <p class="pin-lock__subtitle">Enter the 4-digit secret code to unlock.</p>
+
+      <form class="pin-lock__form" id="pinForm" autocomplete="off" novalidate>
+        <div class="pin-lock__digits" id="pinDigits">
+          <input type="text" inputmode="numeric" pattern="[0-9]*" id="pinHiddenInput" class="pin-lock__hidden-input"
+            autocomplete="one-time-code" aria-label="Secret code">
+        </div>
+        <button type="submit" class="pin-lock__submit">
+          <span>Unlock it</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </form>
+
+      <p class="pin-lock__error" id="pinError" role="alert" aria-live="assertive">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <path d="M12 9v4M12 17h.01M10.3 3.9L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Wrong code, try again my love.
+      </p>
+    </div>
+  </div>
+
+  <a href="#hero" class="skip-link">Skip to content</a>
+
+  <!-- ============================= LOADING SCREEN ============================= -->
+  <div class="loader" role="status" aria-live="polite">
+    <svg class="loader__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M12 3c4.5 0 8 4 8 9a8 8 0 01-16 0c0-5 3.5-9 8-9z" />
+      <path d="M12 7v10M9 9l3 3-3 3M15 9l-3 3 3 3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <div class="loader__bar-track">
+      <div class="loader__bar-fill"></div>
+    </div>
+    <p class="loader__label"><span>Charting the depths for you</span><span class="loader__pct">0%</span></p>
+  </div>
+
+  <!-- ============================= SCROLL PROGRESS ============================= -->
+  <div class="scroll-progress"></div>
+
+  <!-- ============================= DEPTH RAIL ============================= -->
+  <div class="depth-rail" aria-hidden="true">
+    <span class="depth-rail__value">0m</span>
+    <div class="depth-rail__track">
+      <div class="depth-rail__fill"></div>
+    </div>
+  </div>
+
+  <!-- ============================= AMBIENT BACKDROP (fixed, shared) ============================= -->
+  <div class="ocean-backdrop" aria-hidden="true">
+    <div class="ocean-backdrop__glows">
+      <span class="ocean-glow ocean-glow--1"></span>
+      <span class="ocean-glow ocean-glow--2"></span>
+      <span class="ocean-glow ocean-glow--3"></span>
+    </div>
+    <div class="ocean-backdrop__waves" aria-hidden="true">
+      <div class="wave-layer wave-layer--1">
+        <div class="wave-layer__scroll">
+          <svg viewBox="0 0 2880 220" preserveAspectRatio="none">
+            <path fill="rgba(143,227,240,0.16)"
+              d="M0,110 C240,150 480,70 720,110 C960,150 1200,70 1440,110 C1680,150 1920,70 2160,110 C2400,150 2640,70 2880,110 L2880,220 L0,220 Z" />
+          </svg>
+        </div>
+      </div>
+      <div class="wave-layer wave-layer--2">
+        <div class="wave-layer__scroll">
+          <svg viewBox="0 0 2880 220" preserveAspectRatio="none">
+            <path fill="rgba(62,198,224,0.22)"
+              d="M0,130 C240,180 480,80 720,130 C960,180 1200,80 1440,130 C1680,180 1920,80 2160,130 C2400,180 2640,80 2880,130 L2880,220 L0,220 Z" />
+          </svg>
+        </div>
+      </div>
+      <div class="wave-layer wave-layer--3">
+        <div class="wave-layer__scroll">
+          <svg viewBox="0 0 2880 220" preserveAspectRatio="none">
+            <path fill="rgba(244,249,255,0.14)" stroke="rgba(143,227,240,0.35)" stroke-width="1.5"
+              d="M0,150 C120,190 240,110 360,150 C480,190 600,110 720,150 C840,190 960,110 1080,150 C1200,190 1320,110 1440,150 C1560,190 1680,110 1800,150 C1920,190 2040,110 2160,150 C2280,190 2400,110 2520,150 C2640,190 2760,110 2880,150 L2880,220 L0,220 Z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="ocean-backdrop__caustics" aria-hidden="true"></div>
+    <div class="ocean-backdrop__rays">
+      <span class="light-ray light-ray--1"></span>
+      <span class="light-ray light-ray--2"></span>
+      <span class="light-ray light-ray--3"></span>
+    </div>
+    <canvas id="oceanCanvas" class="ocean-backdrop__particles"></canvas>
+    <div class="ocean-backdrop__fog" aria-hidden="true">
+      <span class="ocean-fog ocean-fog--1"></span>
+      <span class="ocean-fog ocean-fog--2"></span>
+    </div>
+    <div class="ocean-backdrop__lilies" aria-hidden="true">
+      <div class="ocean-lily ocean-lily--1">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+      <div class="ocean-lily ocean-lily--2">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+      <div class="ocean-lily ocean-lily--3">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+      <div class="ocean-lily ocean-lily--4">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+      <div class="ocean-lily ocean-lily--5">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+      <div class="ocean-lily ocean-lily--6">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M50 85 C 50 85, 30 70, 20 50 C 10 30, 20 15, 50 25 C 80 15, 90 30, 80 50 C 70 70, 50 85, 50 85 Z" />
+          <path d="M50 25 C 40 40, 45 65, 50 85 C 55 65, 60 40, 50 25 Z" />
+        </svg>
+      </div>
+    </div>
+    <div class="ocean-backdrop__vignette"></div>
+  </div>
+
+  <!-- ============================= NAVBAR ============================= -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#hero" class="navbar__brand" data-scroll-to="hero">
+        <svg class="navbar__brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="12" cy="8" r="3.2" />
+        </svg>
+        <span>Sayangkuuuu's Birthday</span>
+      </a>
+      <nav class="navbar__links" aria-label="Primary">
+        <a href="#hero" class="navbar__link is-active" data-scroll-to="hero">Awal</a>
+        <a href="#memories" class="navbar__link" data-scroll-to="memories">Kenangan Kita</a>
+        <a href="#gallery" class="navbar__link" data-scroll-to="gallery">Galeri</a>
+        <a href="#letter" class="navbar__link" data-scroll-to="letter">Surat</a>
+        <a href="#wishes" class="navbar__link" data-scroll-to="wishes">Harapan</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__menu-btn" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================= MOBILE NAV DRAWER ============================= -->
+  <div class="nav-drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <button class="nav-drawer__close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+      </svg>
+    </button>
+    <a href="#hero" class="nav-drawer__link is-active" data-scroll-to="hero">Awal</a>
+    <a href="#memories" class="nav-drawer__link" data-scroll-to="memories">Kenangan Kita</a>
+    <a href="#gallery" class="nav-drawer__link" data-scroll-to="gallery">Galeri</a>
+    <a href="#letter" class="nav-drawer__link" data-scroll-to="letter">Surat</a>
+    <a href="#wishes" class="nav-drawer__link" data-scroll-to="wishes">Harapan</a>
+  </div>
+
+  <main>
+
+    <!-- ============================= HERO ============================= -->
+    <section id="hero" class="section hero">
+      <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+      <div class="hero__content">
+        <span class="eyebrow hero__eyebrow">Sebuah surat yang datang dari hati, hanya untukmu</span>
+        <h1 class="hero__title">
+          <span class="line"><span>Happy Birthday,</span></span>
+          <span class="line"><span><em>Sayangkuuuu</em></span></span>
+        </h1>
+        <p class="hero__subtitle">
+          19 Juli 2026 — hari ini ada sesuatu yang spesial untukmu.
+          Scroll ke bawah — ada kejutan manis yang sudah menunggumu,
+          <span class="hero__name">sayangkuuuu</span>.
+        </p>
+        <div class="hero__actions">
+          <a href="#memories" class="cta-btn" data-scroll-to="memories">
+            <span>Mulai Perjalanan</span>
+            <svg class="cta-btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="#letter" class="cta-btn cta-btn--ghost" data-scroll-to="letter">Langsung ke Surat</a>
+        </div>
+      </div>
+      <div class="hero__scroll-cue">
+        <div class="mouse"></div>
+        <span>Scroll ke bawah untuk mulai</span>
+      </div>
+    </section>
+
+    <div class="seam seam--mid" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="seam__fill" d="M0,32 C240,80 480,0 720,32 C960,64 1200,16 1440,40 L1440,80 L0,80 Z" />
+        <path class="seam__crest" d="M0,32 C240,80 480,0 720,32 C960,64 1200,16 1440,40" fill="none" />
+      </svg>
+    </div>
+
+    <!-- ============================= MEMORIES ============================= -->
+    <section id="memories" class="section memories">
+      <div class="section__inner">
+        <div class="section-header reveal">
+          <span class="eyebrow">The journey begins, are you ready?</span>
+          <h2 class="section-title">Chapters from <em>our love story</em></h2>
+          <p class="section-lede">Setiap kisah cinta punya arusnya sendiri — ada yang tenang, ada yang bergelombang, dan ada momen-momen hening di antaranya. Ini adalah bab-bab yang layak untuk dikenang.</p>
+        </div>
+
+        <div class="memories__list">
+          <!-- spine + memory-item nodes injected by js/main.js from config/settings.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= GALLERY ============================= -->
+    <section id="gallery" class="section gallery">
+      <div class="section__inner">
+        <div class="section-header section-header--center reveal">
+          <span class="eyebrow">Washed ashore, just for you</span>
+          <h2 class="section-title">Moments I <em>treasure with you</em></h2>
+          <p class="section-lede">Tap foto mana aja buat lihat lebih dekat.</p>
+        </div>
+
+        <div class="gallery__grid">
+          <!-- gallery__item tiles injected by js/gallery.js from config/settings.js -->
+        </div>
+
+        <div class="gallery__message reveal">
+          <p class="gallery__message-text">
+            Sayangggg itu aku kasih foto dimana kita abis dari tempat sushi terus ke Solstice Cake, terus kita malem minggu poto-poto disitu senggggggg 😍 Oiya aku juga kasih foto pertama kita boncengan itu, beeeeeebeeeeeee bakalan kangen sama masa-masa itu senggggggg 😔
+            <br><br>
+            Pokonya kalo besok beeeeeebeeeeeee udah berangkat inget sama janji beeeeeebeeeeeee ya cuma 2 tahun aja ya sayang jangan lebih oteyyyyyyy! Aku gasanggup kalo beeeeeebeeeeeee tinggal mondok, tapi mau gimana lagi senggggggg takdir ga ada yang tau okelah..
+            <br><br>
+            Beeeeeebeeeeeee disana jangan sedi-sedi ya sayang, aku disini nungguin kabar beeeeeebeeeeeee. Aku sayangggggggggggggggggggggggggggggg sama beeeeeebeeeeeee.....
+            <span class="gallery__message-emoji">🤍🤍💞💞💞💗💗💗🫰🏻🫰🏻🫂🫂🫂🙆🏻🙆🏻 ilysm sayangggggg 🙆🏻🙆🏻🙆🏻🫂🫂🫂🤍🤍💋💋</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="seam seam--deep" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="seam__fill" d="M0,40 C240,8 480,72 720,40 C960,8 1200,56 1440,24 L1440,80 L0,80 Z" />
+        <path class="seam__crest" d="M0,40 C240,8 480,72 720,40 C960,8 1200,56 1440,24" fill="none" />
+      </svg>
+    </div>
+
+    <!-- ============================= LETTER ============================= -->
+    <section id="letter" class="section letter">
+      <div class="section__inner section__inner--narrow">
+        <div class="letter__inner">
+          <div class="section-header section-header--center reveal">
+            <span class="eyebrow">A bottle, finally ashore for you</span>
+            <h2 class="section-title">Open when <em>found</em></h2>
+          </div>
+
+          <div class="letter__bottle-stage reveal reveal--scale" tabindex="0" role="button"
+            aria-label="Open the letter">
+            <div class="letter__bottle-glow" aria-hidden="true"></div>
+            <svg class="bottle" viewBox="0 0 120 160" fill="none">
+              <path d="M50 10h20v18c10 6 16 18 16 32v68a14 14 0 01-14 14H48a14 14 0 01-14-14V60c0-14 6-26 16-32z"
+                fill="rgba(143,227,240,0.14)" stroke="#f9a8d4" stroke-width="2" />
+              <rect x="48" y="6" width="24" height="14" rx="3" fill="#2a1024" stroke="#f9a8d4" stroke-width="1.5" />
+              <path d="M40 90c4 6 36 6 40 0v40a8 8 0 01-8 8H48a8 8 0 01-8-8z" fill="rgba(255,215,106,0.5)" />
+              <rect x="44" y="74" width="32" height="10" rx="2" fill="#f4f9ff" opacity="0.85"
+                transform="rotate(-4 60 79)" />
+            </svg>
+            <p class="letter__hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Tap botolnya buat buka surat
+            </p>
+          </div>
+
+          <div class="letter__panel">
+            <p class="letter__salutation">Hallo sayang,</p>
+            <div class="letter__body"><!-- typewritten in by js/letter.js --></div>
+            <p class="letter__signature">— Aku sayang sama kamu, selamanya ❤️</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= WISHES ============================= -->
+    <section id="wishes" class="section wishes">
+      <div class="section__inner">
+        <div class="section-header section-header--center reveal">
+          <span class="eyebrow">Sent with the current, for you</span>
+          <h2 class="section-title">Wishes for <em>the year ahead</em></h2>
+        </div>
+
+        <div class="wishes__grid">
+          <!-- wish-card items injected by js/main.js from config/settings.js -->
+        </div>
+      </div>
+    </section>
+
+    <div class="seam seam--abyss" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="seam__fill" d="M0,24 C240,64 480,8 720,40 C960,72 1200,16 1440,48 L1440,80 L0,80 Z" />
+        <path class="seam__crest" d="M0,24 C240,64 480,8 720,40 C960,72 1200,16 1440,48" fill="none" />
+      </svg>
+    </div>
+
+    <!-- ============================= ENDING ============================= -->
+    <section id="ending" class="section ending">
+      <div class="ending__inner reveal">
+        <span class="eyebrow">Resurfacing, almost there</span>
+        <h2 class="ending__title">Happy Birthday, <em>my love</em>.</h2>
+        <p class="ending__message">
+          Thank you for being the most beautiful part of my life.
+          Here's to another year of love, laughter, and counting down the days
+          until we celebrate together — side by side, no distance between us.
+        </p>
+        <div class="ending__candles" aria-hidden="true">
+          <div class="candle"></div>
+          <div class="candle"></div>
+          <div class="candle"></div>
+          <div class="candle"></div>
+          <div class="candle"></div>
+        </div>
+        <p class="ending__signoff">Buat satu permohonan.</p>
+        <div class="ending__replay">
+          <button class="cta-btn cta-btn--ghost" data-replay>
+            <span>Kembali ke Atas</span>
+            <svg class="cta-btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="ending__footer-note">Dibuat dengan sepenuh hati · <span data-current-year>2026</span></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= GALLERY LIGHTBOX =============================
+     Lives at body level, outside the main content flow, so its z-index can
+     properly stack above the fixed navbar — main establishes its own
+     stacking context, which would otherwise cap the lightbox below
+     nav/overlay elements regardless of its own z-index value. -->
+  <div class="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+      </svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <div class="lightbox__frame">
+      <div class="lightbox__media-wrap"></div>
+      <p class="lightbox__caption"></p>
+    </div>
+  </div>
+
+  <!-- ============================= MUSIC PLAYER ============================= -->
+  <!-- Player is dynamically injected by js/music-player.js -->
+
+  <script>
+    /* =============================== CONFIGURATION =============================== */
+    window.WEBSITE_PIN = '1907';
+
+    window.OCEAN_SETTINGS = {
+      recipientName: 'Sayangkuuuu',
+
+      musicTracks: [
+        {
+          src: 'lagu.mp3',
+          title: 'About You',
+          artist: 'The 1975',
+          cover: '',
+          startTime: 0
+        }
+      ],
+
+      galleryPhotos: [
+        { file: 'album/foto1.jpeg', caption: 'Momen yang gak mau aku lupain' },
+        { file: 'album/foto2.jpeg', caption: 'Kamu dan senyum indahmu' },
+        { file: 'album/foto3.jpeg', caption: 'Orang paling spesial di hidupku' },
+        { file: 'album/foto4.jpeg', caption: 'Bersamamu adalah tempat favoritku' },
+        { file: 'album/foto5.jpeg', caption: 'Setiap momen bersamamu sangat berharga' },
+        { file: 'album/foto6.jpeg', caption: 'Yang bikin hatiku bahagia' },
+        { file: 'album/foto7.jpeg', caption: 'Pacarku yang paling cantik' },
+        { file: 'album/foto8.jpeg', caption: 'Selamanya dan selalu, kamu dan aku' }
+      ],
+
+      letterParagraphs: [
+        "Hallo sayang, happy birthday ya sayangku! Hari ini hari dimana beeeeeebeeeeeee tamba usia, hari yang beeeeeebeeeeeee tunggu! 🎂💕",
+
+        "Maapin aku ya sayang kalo sering mara-mara sama beeeeeebeeeeeee, egois sama beeeeeebeeeeeee. Makasi ya sayang udah hadir di hidupku, udah nerima aku apa adanya. 🤍",
+
+        "Beeeeeebeeeeeee janji ya sama aku nanti kalo udah disana jangan lama-lama oteyyyyyyy! Katanya beeeeeebeeeeeee sayang sama aku, kalo beeeeeebeeeeeee sayang sama aku beeeeeebeeeeeee disana gaboleh lama-lama. Beeeeeebeeeeeee bilang cuma 2 tahun ya!",
+
+        "Beeeeeebeeeeeee disana jaga kesehatan, jaga diri baik-baik ya sayang, jangan sakit-sakit okeyyyy! Aku disini selalu ada buat beeeeeebeeeeeee kapanpun beeeeeebeeeeeee butuh. Aku sayang sama beeeeeebeeeeeee 💞",
+
+        "Aku usahain pas beeeeeebeeeeeee ulang tahun aku dateng ya sayang. Kalo semisal aku engga dateng jangan sedih ya sayang...",
+
+        "Pokonya aku mau ngucapin happy birthday pacarku! Sehat-sehat terus ya sayang, hidup lebih lama ya kesayanganku! Aku disini selalu berdoa buat beeeeeebeeeeeee, buat kesehatan beeeeeebeeeeeee juga.",
+
+        "Maapin aku ya sayang disaat beeeeeebeeeeeee ulang tahun aku gabisa kasih apa-apa, aku bingung mau ngasih gimana. Maapin aku juga ya kalo selama beeeeeebeeeeeee sama aku, aku selalu ngerepotin beeeeeebeeeeeee, selalu minta-minta sama beeeeeebeeeeeee. Maapin aku ya sayangg 🤍🤍🫰🏻🫰🏻🙆🏻🙆🏻",
+
+        "Oiyaaaaaaa ini kan di hari bahagia beeeeeebeeeeeee ko sedih-sedih si! Harusnya semangat ya sayang, gaboye sedih-sedih! Nanti kalo beeeeeebeeeeeee kangen sama aku, capybara nya di peluk ya sayang, anggep ada aku di dalem boneka itu 🧸",
+
+        "Makasi ya udah mau sama aku sampe sejauh ini. Perasaan kemaren kita baru kenalan, baru pertama kali jalan-jalan. Diposisi itu sumpah aku malu yang ngeliat outfitku kaya gitu, rambutnya berantakan. Pertama kali aku gonceng beeeeeebeeeeeee itu aku gemeter, gaperna aku gonceng orang secantik beeeeeebeeeeeee!",
+
+        "Aku cuma mau ngucapin happy birthday sama terimakasih udah jadi rumah buat aku sampe kita bisa sejauh ini. Aku inget yang pas kita adu ego itu, kita kaya orang ga kenal satu sama lain, kaya engga mentingin hubungan. Yah walaupun kita sempet adu ego beberapa kali tapi untungnya kita bisa sejauh ini!",
+
+        "Ga kerasa berapa hari lagi beeeeeebeeeeeee bakal ninggalin aku selama 2 tahun... itupun gatau beneran 2 tahun apa engga, ya semoga beneran sampe kelas 8 aja ya. Se-aslinya aku belum siap kalo beeeeeebeeeeeee tinggal gini aja, apalagi itu di hari bahagia aku, dihari aku bertambah usia eumm...",
+
+        "Tapi gimana ya sayang namanya juga takdir, kita jalanin aja ya sayang. Doain aku ya semoga kuat ngadepin hari-hariku, beeeeeebeeeeeee juga gitu ya semoga kuat ngadepin hari-hari disana.",
+
+        "Mungkin kemarin kalo kita engga kenalan gamungkin kita bisa sejauh ini. Hidup lebih lama ya pacarku! Aku sayang sama beeeeeebeeeeeee 💞💞🤍🩷💐",
+
+        "Sebenernya aku gamau kalo kaya gini hidup engga komunikasi satu sama lain, tapi mau gimana beeeeeebeeeeeee udah terlanjur daftar disana juga, terus orang tua juga yang nyuruh. Semoga beeeeeebeeeeeee disana inget janji beeeeeebeeeeeee ya, sekolah cuma 2 tahun!",
+
+        "Pokonya beeeeeebeeeeeee gabole sedih oteyyyyyyy! Ini hari bahagia beeeeeebeeeeeee, hari beeeeeebeeeeeee bertambah usia! Se-aslinya kalo beeeeeebeeeeeee engga sekolah disana aku ada surprise buat beeeeeebeeeeeee, tapi gimana surprise nya gagal. Maapin aku ya sayang gabisa ngapa-ngapain demi beeeeeebeeeeeee.",
+
+        "Happy terus ya sayang! Beeeeeebeeeeeee happy, aku juga happy ko 🫶🏻🫶🏻 Ingetin aku terus ya sayang, jangan lupain aku oteyyyyyyy!",
+
+        "Aku bakalan berusaha buat engga sedih terus, tapi gimana aku selalu inget kita main berdua sampe sore sampe malem. Jadi keinget pertama kali kita ketemu... gabakal lupa masa-masa kita bahagia itu!",
+
+        "Aku sayangggggggggggggggggggggggggggggg sama beeeeeebeeeeeee 🫂🫂🤍🤍💞💞 Jaga diri baik-baik ya sayang.... 💕"
+      ],
+
+      memories: [
+        {
+          depth: '4m',
+          year: '23 Oktober 2025',
+          title: 'The First Save',
+          text: 'Masi inget engga seng tanggal 23 Oktober 2025 yang aku sv beeeeeebeeeeeee? Kita minta sv-sv an itu, typing kita kaya orang apa seng. Wajar ya namanya baru pertama kali aku ngechat bidadari 🤭🤭 Takut itu aku ngechat beeeeeebeeeeeee, takut engga di sv. Eh tau-taunya malah beeeeeebeeeeeee sv!'
+        },
+        {
+          depth: '12m',
+          year: 'Pertama Kali Ketemu',
+          title: 'Love at First Sight',
+          text: 'Beeeeeebeeeeeee inget engga awal kita ketemu itu di Seblak Mahzam? Itu pertama kali aku liat beeeeeebeeeeeee, aku langsung suka tau senggggggg! Entah kenapa hatiku kalo ngeliat beeeeeebeeeeeee jadi suka gitu. Manis, cantik, pendiem — pokonya beeeeeebeeeeeee dulu pendiem banget!'
+        },
+        {
+          depth: '22m',
+          year: 'Sushi & Solstice Cake',
+          title: 'Our Saturday Night',
+          text: 'Kita abis dari tempat sushi terus ke Solstice Cake, malem minggu poto-poto disitu senggggggg. Pertama kali aku gonceng beeeeeebeeeeeee itu aku gemeter! Gaperna aku gonceng orang secantik beeeeeebeeeeeee.'
+        },
+        {
+          depth: '32m',
+          year: 'Sampe Sejauh Ini',
+          title: 'Through It All Together',
+          text: 'Walaupun kita sempet adu ego beberapa kali, kaya orang ga kenal satu sama lain, tapi untungnya kita bisa sejauh ini. Makasi udah jadi rumah buat aku, cinta kita lebih kuat dari itu semua.'
+        }
+      ],
+
+      wishes: [
+        {
+          icon: 'heart',
+          text: 'Semoga hatimu selalu dipenuhi kebahagiaan dan ketenangan. Kamu layak mendapatkan semua hal indah di dunia ini, sayangku.'
+        },
+        {
+          icon: 'star',
+          text: 'Semoga semua mimpimu tercapai satu per satu. Aku mau lihat kamu sukses, bersinar, dan meraih semua yang pernah kamu impikan.'
+        },
+        {
+          icon: 'wave',
+          text: 'Semoga tahun baru ini membawa kegembiraan tanpa akhir, kesehatan yang baik, dan momen-momen indah yang bikin kamu bahagia.'
+        },
+        {
+          icon: 'compass',
+          text: 'Semoga beeeeeebeeeeeee disana kuat ngadepin hari-hari. Janji ya sekolah cuma 2 tahun, jangan lama-lama oteyyyyyyy!'
+        },
+        {
+          icon: 'anchor',
+          text: 'Semoga kamu selalu punya kekuatan buat menghadapi setiap tantangan. Aku selalu ada disini, mendoakan kamu, percaya sama kamu, selamanya.'
+        },
+        {
+          icon: 'shell',
+          text: 'Semoga cinta kita makin dalam dan kuat setiap harinya. Aku pilih kamu hari ini, besok, dan selamanya. Happy Birthday sayangkuuuu! 💕'
+        }
+      ]
+    };
+  </script>
+
+  <script>
+    /**
+     * config.js
+     * Central runtime configuration. All user-facing values come from
+     * /config/settings.js — do not hardcode anything here.
+     */
+    (function (window) {
+      'use strict';
+
+      const S = window.OCEAN_SETTINGS || {};
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      const isSmallScreen = window.innerWidth < 720;
+
+      function getPerfTier() {
+        if (prefersReducedMotion) return 'off';
+        if (isSmallScreen || isCoarsePointer) return 'low';
+        if (window.innerWidth < 1280) return 'mid';
+        return 'high';
+      }
+
+      window.OCEAN = {
+        config: {
+          sections: [
+            { id: 'hero', label: 'Awal' },
+            { id: 'memories', label: 'Kenangan' },
+            { id: 'gallery', label: 'Galeri' },
+            { id: 'letter', label: 'Surat' },
+            { id: 'wishes', label: 'Harapan' },
+            { id: 'ending', label: 'Penutup' }
+          ],
+          recipientName: S.recipientName || 'You',
+          audioTracks: S.musicTracks || [],
+          perfTier: getPerfTier(),
+          prefersReducedMotion
+        },
+        state: {
+          loaded: false,
+          currentSection: 'hero',
+          scrollDepthMeters: 0
+        },
+        bus: {
+          _listeners: {},
+          on(evt, fn) {
+            (this._listeners[evt] = this._listeners[evt] || []).push(fn);
+            return () => this.off(evt, fn);
+          },
+          off(evt, fn) {
+            if (!this._listeners[evt]) return;
+            this._listeners[evt] = this._listeners[evt].filter((f) => f !== fn);
+          },
+          emit(evt, payload) {
+            (this._listeners[evt] || []).forEach((fn) => {
+              try { fn(payload); } catch (e) { console.error('[OCEAN bus]', evt, e); }
+            });
+          }
+        },
+        utils: {
+          clamp(v, min, max) { return Math.max(min, Math.min(max, v)); },
+          lerp(a, b, t) { return a + (b - a) * t; },
+          rand(min, max) { return Math.random() * (max - min) + min; },
+          throttleRaf(fn) {
+            let scheduled = false;
+            return function throttled(...args) {
+              if (scheduled) return;
+              scheduled = true;
+              requestAnimationFrame(() => { scheduled = false; fn.apply(this, args); });
+            };
+          },
+          debounce(fn, wait) {
+            let t;
+            return function debounced(...args) {
+              clearTimeout(t);
+              t = setTimeout(() => fn.apply(this, args), wait);
+            };
+          }
+        }
+      };
+    })(window);
+
+
+
+    /**
+     * gallery.js
+     * Renders the 3:4 photo grid from OCEAN_SETTINGS.galleryPhotos (set in
+     * config/settings.js). Photos are loaded from assets/images/ automatically.
+     * Falls back to a gradient placeholder when a photo file is missing.
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+      const SETTINGS = window.OCEAN_SETTINGS || {};
+
+      let galleryData = [];
+      let activeIndex = 0;
+
+      const PLATE_GRADIENTS = [
+        'linear-gradient(155deg, rgba(62,198,224,0.22), rgba(4,28,50,0.92))',
+        'linear-gradient(155deg, rgba(255,215,106,0.16), rgba(6,18,34,0.94))',
+        'linear-gradient(155deg, rgba(143,227,240,0.18), rgba(8,16,38,0.92))',
+        'linear-gradient(155deg, rgba(255,138,122,0.12), rgba(4,15,28,0.94))',
+        'linear-gradient(155deg, rgba(62,198,224,0.14), rgba(255,215,106,0.07), rgba(4,16,30,0.94))',
+        'linear-gradient(155deg, rgba(143,227,240,0.1), rgba(2,10,20,0.95))'
+      ];
+
+      const PLACEHOLDER_SVG = `
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+      <path d="M4 17l4.5-5 3 3 4-5 4.5 5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="9" cy="8" r="1.4"/>
+      <rect x="3" y="4" width="18" height="16" rx="2.4"/>
+    </svg>`;
+
+      function plateFor(index) {
+        return PLATE_GRADIENTS[index % PLATE_GRADIENTS.length];
+      }
+
+      function mediaMarkup(item, index, forLightbox) {
+        if (item.src) {
+          return `<img class="gallery__media" src="${escapeHtml(item.src)}" alt="${escapeHtml(item.caption || '')}" loading="${forLightbox ? 'eager' : 'lazy'}">`;
+        }
+        const indexLabel = String(index + 1).padStart(2, '0');
+        return `
+      <div class="gallery__placeholder" style="background:${plateFor(index)}">
+        ${PLACEHOLDER_SVG}
+        ${forLightbox ? '' : `<span class="gallery__placeholder-index">${indexLabel} / ${String(galleryData.length).padStart(2, '0')}</span>`}
+      </div>`;
+      }
+
+      function buildTile(item, index) {
+        const el = document.createElement('div');
+        el.className = 'gallery__item';
+        el.style.setProperty('--d', `${(index % 4) * 0.08}s`);
+        el.setAttribute('data-index', String(index));
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', `Open photo: ${item.caption}`);
+        el.innerHTML = `
+      ${mediaMarkup(item, index, false)}
+      <div class="gallery__overlay">
+        <span class="gallery__caption">${escapeHtml(item.caption)}</span>
+      </div>
+    `;
+        return el;
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = String(str ?? '');
+        return div.innerHTML;
+      }
+
+      function loadData() {
+        const photos = SETTINGS.galleryPhotos || [];
+        if (!photos.length) {
+          return [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
+            id: `g${n}`,
+            caption: 'Add a caption for this memory',
+            src: null
+          }));
+        }
+        return photos.map((item, i) => ({
+          id: `g${i + 1}`,
+          caption: item.caption || '',
+          src: item.file ? `${item.file}` : null
+        }));
+      }
+
+      function renderGrid(data) {
+        const grid = document.querySelector('.gallery__grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        data.forEach((item, i) => grid.appendChild(buildTile(item, i)));
+      }
+
+      function openLightbox(index) {
+        activeIndex = index;
+        const lightbox = document.querySelector('.lightbox');
+        const mediaWrap = lightbox?.querySelector('.lightbox__media-wrap');
+        const caption = lightbox?.querySelector('.lightbox__caption');
+        if (!lightbox || !mediaWrap || !caption) return;
+
+        const item = galleryData[index];
+        mediaWrap.innerHTML = mediaMarkup(item, index, true);
+        caption.textContent = item.caption || '';
+
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+      }
+
+      function closeLightbox() {
+        const lightbox = document.querySelector('.lightbox');
+        lightbox?.classList.remove('is-open');
+        lightbox?.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+      }
+
+      function step(delta) {
+        if (!galleryData.length) return;
+        activeIndex = (activeIndex + delta + galleryData.length) % galleryData.length;
+        openLightbox(activeIndex);
+      }
+
+      function bindEvents() {
+        const grid = document.querySelector('.gallery__grid');
+        const lightbox = document.querySelector('.lightbox');
+
+        grid?.addEventListener('click', (e) => {
+          const tile = e.target.closest('.gallery__item');
+          if (!tile) return;
+          openLightbox(Number(tile.getAttribute('data-index')));
+        });
+
+        grid?.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          const tile = e.target.closest('.gallery__item');
+          if (!tile) return;
+          e.preventDefault();
+          openLightbox(Number(tile.getAttribute('data-index')));
+        });
+
+        lightbox?.querySelector('.lightbox__close')?.addEventListener('click', closeLightbox);
+        lightbox?.querySelector('.lightbox__nav--prev')?.addEventListener('click', () => step(-1));
+        lightbox?.querySelector('.lightbox__nav--next')?.addEventListener('click', () => step(1));
+
+        lightbox?.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox?.classList.contains('is-open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') step(-1);
+          if (e.key === 'ArrowRight') step(1);
+        });
+      }
+
+      function initGallery() {
+        galleryData = loadData();
+        renderGrid(galleryData);
+        bindEvents();
+
+        const tiles = document.querySelectorAll('.gallery__item');
+        if (OCEAN.config.prefersReducedMotion) {
+          tiles.forEach((t) => t.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          }),
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        tiles.forEach((t) => observer.observe(t));
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGallery);
+      } else {
+        initGallery();
+      }
+    })(window, document);
+
+
+
+    /**
+     * letter.js
+     * Handles the "open the bottle" interaction and typewriter reveal.
+     * Letter text comes from OCEAN_SETTINGS.letterParagraphs (config/settings.js).
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+      const SETTINGS = window.OCEAN_SETTINGS || {};
+
+      const LETTER_PARAGRAPHS = (SETTINGS.letterParagraphs && SETTINGS.letterParagraphs.length)
+        ? SETTINGS.letterParagraphs
+        : [
+          'I wanted to send this the way old sailors used to send word home — sealed up, set adrift, and trusted to find its way to you.',
+          "Today is your day, and I hope it feels exactly like that: unhurried, warm, and full of small good things. You deserve every bit of it.",
+          'Thank you for being the kind of person whose presence makes ordinary days feel like something worth remembering. This little corner of the internet is just a small way of saying so.',
+          "However you spend today, I hope it's surrounded by people who love you as much as I do. Happy birthday."
+        ];
+
+      let typed = false;
+
+      function typeParagraphs(container, paragraphs, onDone) {
+        if (OCEAN.config.prefersReducedMotion) {
+          container.innerHTML = paragraphs.map((p) => `<p>${p}</p>`).join('');
+          onDone?.();
+          return;
+        }
+
+        container.innerHTML = '';
+        let pIndex = 0;
+        let cIndex = 0;
+        let currentP = null;
+        let textNode = null;
+        const caret = document.createElement('span');
+        caret.className = 'letter__caret';
+
+        function typeChar() {
+          if (pIndex >= paragraphs.length) {
+            caret.remove();
+            onDone?.();
+            return;
+          }
+          if (!currentP) {
+            currentP = document.createElement('p');
+            textNode = document.createTextNode('');
+            currentP.appendChild(textNode);
+            currentP.appendChild(caret);
+            container.appendChild(currentP);
+          }
+
+          const text = paragraphs[pIndex];
+          cIndex++;
+          textNode.data = text.slice(0, cIndex);
+
+          if (cIndex >= text.length) {
+            pIndex++;
+            cIndex = 0;
+            currentP = null;
+            setTimeout(typeChar, 320);
+          } else {
+            const lastChar = text[cIndex - 1];
+            let delay = 13 + Math.random() * 16;
+            if ('.!?'.includes(lastChar)) delay += 220;
+            else if (',;:—'.includes(lastChar)) delay += 110;
+            setTimeout(typeChar, delay);
+          }
+        }
+
+        typeChar();
+      }
+
+      function initLetter() {
+        const stage = document.querySelector('.letter__bottle-stage');
+        const panel = document.querySelector('.letter__panel');
+        const body = document.querySelector('.letter__body');
+
+        if (!stage || !panel || !body) return;
+
+        function openLetter() {
+          if (typed) return;
+          typed = true;
+          stage.classList.add('is-opened');
+          panel.classList.add('is-open');
+          setTimeout(() => {
+            typeParagraphs(body, LETTER_PARAGRAPHS, () => {
+              OCEAN.bus.emit('letter:revealed');
+            });
+          }, OCEAN.config.prefersReducedMotion ? 0 : 380);
+        }
+
+        stage.addEventListener('click', openLetter);
+        stage.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLetter();
+          }
+        });
+        stage.setAttribute('role', 'button');
+        stage.setAttribute('tabindex', '0');
+        stage.setAttribute('aria-label', 'Open the letter');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLetter);
+      } else {
+        initLetter();
+      }
+    })(window, document);
+
+
+    /**
+     * main.js
+     * Bootstraps the page: loading screen, hero entrance, renders memories
+     * timeline and wishes from OCEAN_SETTINGS (config/settings.js).
+     * No more JSON data files needed — all content lives in settings.js.
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+      const SETTINGS = window.OCEAN_SETTINGS || {};
+
+      /* ── Loading screen ─────────────────────────────────────── */
+      function runLoader() {
+        return new Promise((resolve) => {
+          const loader = document.querySelector('.loader');
+          const fill = loader?.querySelector('.loader__bar-fill');
+          const label = loader?.querySelector('.loader__label span');
+          const pctLabel = loader?.querySelector('.loader__pct');
+          if (!loader) { resolve(); return; }
+
+          if (OCEAN.config.prefersReducedMotion) {
+            loader.classList.add('is-hidden');
+            resolve();
+            return;
+          }
+
+          let pct = 0;
+          const messages = ['Charting the depths', 'Releasing bubbles', 'Catching the light', 'Almost ashore'];
+          let mIndex = 0;
+
+          const interval = setInterval(() => {
+            pct += OCEAN.utils.rand(6, 16);
+            if (pct >= 100) pct = 100;
+            if (fill) fill.style.width = `${pct}%`;
+            if (pctLabel) pctLabel.textContent = `${Math.round(pct)}%`;
+            if (label && Math.random() > 0.55 && mIndex < messages.length - 1) {
+              mIndex++;
+              label.style.opacity = '0';
+              setTimeout(() => { label.textContent = messages[mIndex]; label.style.opacity = '1'; }, 180);
+            }
+            if (pct >= 100) {
+              clearInterval(interval);
+              setTimeout(() => { loader.classList.add('is-hidden'); setTimeout(resolve, 600); }, 300);
+            }
+          }, 180);
+        });
+      }
+
+      /* ── Hero entrance ──────────────────────────────────────── */
+      function playHeroEntrance() {
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        const title = hero.querySelector('.hero__title');
+        const items = [
+          hero.querySelector('.hero__eyebrow'),
+          hero.querySelector('.hero__subtitle'),
+          hero.querySelector('.hero__actions'),
+          hero.querySelector('.hero__scroll-cue')
+        ].filter(Boolean);
+
+        if (OCEAN.config.prefersReducedMotion) {
+          items.forEach((el) => { el.style.opacity = '1'; });
+          title?.classList.add('is-revealed');
+          return;
+        }
+
+        title?.classList.add('is-revealed');
+        items.forEach((el, i) => {
+          el.style.animation = `fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) ${0.25 + i * 0.16}s forwards`;
+        });
+      }
+
+      /* ── Memories timeline ──────────────────────────────────── */
+      function renderMemories() {
+        const list = document.querySelector('.memories__list');
+        if (!list) return;
+
+        const data = (SETTINGS.memories && SETTINGS.memories.length)
+          ? SETTINGS.memories
+          : [{ depth: '4m', year: 'Chapter One', title: 'A memory worth keeping', text: 'Add your memory in config/settings.js.' }];
+
+        list.innerHTML = `
+      <div class="memories__spine" aria-hidden="true"><div class="memories__spine-fill"></div></div>
+    ` + data.map((m) => `
+      <div class="memory-item">
+        <div class="memory-item__node"><span class="memory-item__node-dot"></span></div>
+        <div class="memory-item__depth">${escapeHtml(m.depth)} below surface</div>
+        <div class="memory-item__card">
+          <div class="memory-item__year">${escapeHtml(m.year)}</div>
+          <h3 class="memory-item__title">${escapeHtml(m.title)}</h3>
+          <p class="memory-item__text">${escapeHtml(m.text)}</p>
+        </div>
+      </div>
+    `).join('');
+
+        observeNewly(list.querySelectorAll('.memory-item'));
+        initSpineFill(list);
+      }
+
+      function initSpineFill(memoriesList) {
+        const spine = memoriesList.querySelector('.memories__spine-fill');
+        if (!spine) return;
+        if (OCEAN.config.prefersReducedMotion) { spine.style.height = '100%'; return; }
+
+        const update = OCEAN.utils.throttleRaf(() => {
+          const rect = memoriesList.getBoundingClientRect();
+          const total = rect.height;
+          const visibleFromTop = OCEAN.utils.clamp(window.innerHeight * 0.6 - rect.top, 0, total);
+          spine.style.height = `${(visibleFromTop / total) * 100}%`;
+        });
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      }
+
+      /* ── Wishes grid ────────────────────────────────────────── */
+      const ICONS = {
+        wave: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>',
+        shell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c4.5 0 8 4 8 9a8 8 0 01-16 0c0-5 3.5-9 8-9z"/><path d="M12 7v10M9 9l3 3-3 3M15 9l-3 3 3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.6L22 9.2l-5.6 4.6L18 22l-6-4.2L6 22l1.6-8.2L2 9.2l7.4-0.6z"/></svg>',
+        compass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6z" fill="currentColor" stroke="none"/></svg>',
+        anchor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M6 13a6 6 0 0012 0M4 13h2M18 13h2"/></svg>',
+        heart: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.8-10-9.5C0.3 8 2 4.5 5.5 4.2 8 4 10.3 5.5 12 8c1.7-2.5 4-4 6.5-3.8C22 4.5 23.7 8 22 11.5 19.5 16.2 12 21 12 21z"/></svg>'
+      };
+
+      function renderWishes() {
+        const grid = document.querySelector('.wishes__grid');
+        if (!grid) return;
+
+        const data = (SETTINGS.wishes && SETTINGS.wishes.length)
+          ? SETTINGS.wishes
+          : [{ icon: 'heart', text: 'Happy birthday!' }];
+
+        grid.innerHTML = data.map((w, i) => `
+      <div class="wish-card" style="--d:${(i % 3) * 0.1}s">
+        <span class="wish-card__quote-mark">"</span>
+        <div class="wish-card__icon">${ICONS[w.icon] || ICONS.heart}</div>
+        <p class="wish-card__text">${escapeHtml(w.text)}</p>
+      </div>
+    `).join('');
+
+        observeNewly(grid.querySelectorAll('.wish-card'));
+      }
+
+      /* ── Helpers ────────────────────────────────────────────── */
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = String(str ?? '');
+        return div.innerHTML;
+      }
+
+      function observeNewly(nodes) {
+        if (!nodes.length) return;
+        if (OCEAN.config.prefersReducedMotion) {
+          nodes.forEach((n) => n.classList.add('is-visible'));
+          return;
+        }
+        const observer = new IntersectionObserver(
+          (entries) => entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          }),
+          { threshold: 0.18, rootMargin: '0px 0px -60px 0px' }
+        );
+        nodes.forEach((n) => observer.observe(n));
+      }
+
+      function initMisc() {
+        document.querySelectorAll('[data-replay]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: OCEAN.config.prefersReducedMotion ? 'auto' : 'smooth' });
+          });
+        });
+        const yearEl = document.querySelector('[data-current-year]');
+        if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+        // Candle blow out interaction
+        const candles = document.querySelectorAll('.candle');
+        const candlesContainer = document.querySelector('.ending__candles');
+        const signoff = document.querySelector('.ending__signoff');
+
+        let blownOut = 0;
+        candles.forEach(candle => {
+          candle.addEventListener('click', () => {
+            if (!candle.classList.contains('is-out')) {
+              candle.classList.add('is-out');
+              blownOut++;
+              if (blownOut === candles.length) {
+                candlesContainer?.classList.add('is-all-out');
+                if (signoff) {
+                  signoff.style.opacity = '0';
+                  setTimeout(() => {
+                    signoff.textContent = 'Wish granted.';
+                    signoff.style.opacity = '1';
+                  }, 400);
+                }
+              }
+            }
+          });
+        });
+      }
+
+      /* ── Boot ───────────────────────────────────────────────── */
+      async function boot() {
+        initMisc();
+        renderMemories();
+        renderWishes();
+        await runLoader();
+        OCEAN.state.loaded = true;
+        playHeroEntrance();
+        OCEAN.bus.emit('app:ready');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+      } else {
+        boot();
+      }
+    })(window, document);
+
+
+    /**
+     * music-player.js
+     * Single-song card player dengan cover art, artist, progress bar, time, dan controls.
+     * Config dari OCEAN_SETTINGS.musicTracks[0] (config/settings.js).
+     */
+    (function (window, document) {
+      'use strict';
+
+      const SETTINGS = window.OCEAN_SETTINGS || {};
+
+      function fmt(sec) {
+        if (!sec || isNaN(sec)) return '0:00';
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      function injectPlayerHTML() {
+        const html = `
+      <div class="music-player" role="region" aria-label="Background music player">
+        <button class="music-player__fab" aria-label="Toggle music player" aria-expanded="false">
+          <span class="music-player__fab-icon music-player__fab-icon--note">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+          </span>
+          <span class="music-player__fab-icon music-player__fab-icon--close" style="display:none">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          </span>
+          <div class="music-player__fab-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+        </button>
+        <div class="music-player__card" aria-hidden="true">
+          <div class="music-player__cover-wrap">
+            <img class="music-player__cover" src="" alt="Album cover">
+          </div>
+          <div class="music-player__meta">
+            <span class="music-player__title"></span>
+            <span class="music-player__artist"></span>
+          </div>
+          <div class="music-player__progress" role="progressbar" aria-label="Track progress">
+            <div class="music-player__progress-fill"></div>
+          </div>
+          <div class="music-player__time-row">
+            <span class="music-player__time-cur">0:00</span>
+            <span class="music-player__time-dur">0:00</span>
+          </div>
+          <div class="music-player__bar">
+            <button class="music-player__prev" aria-label="Previous track">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+            </button>
+            <button class="music-player__toggle" aria-label="Play music">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button class="music-player__next" aria-label="Next track">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2.5-6 8.5 6V6H16v12z"/></svg>
+            </button>
+          </div>
+          <div class="music-player__bars" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    `;
+        document.body.insertAdjacentHTML('beforeend', html);
+      }
+
+      function initMusic() {
+        injectPlayerHTML();
+
+        const player = document.querySelector('.music-player');
+        const toggleBtn = player?.querySelector('.music-player__toggle');
+        const prevBtn = player?.querySelector('.music-player__prev');
+        const nextBtn = player?.querySelector('.music-player__next');
+        const fabBtn = player?.querySelector('.music-player__fab');
+        const fabIconNote = player?.querySelector('.music-player__fab-icon--note');
+        const fabIconClose = player?.querySelector('.music-player__fab-icon--close');
+        const coverImg = player?.querySelector('.music-player__cover');
+        const titleEl = player?.querySelector('.music-player__title');
+        const artistEl = player?.querySelector('.music-player__artist');
+        const progressBar = player?.querySelector('.music-player__progress');
+        const progressFill = player?.querySelector('.music-player__progress-fill');
+        const timeCur = player?.querySelector('.music-player__time-cur');
+        const timeDur = player?.querySelector('.music-player__time-dur');
+
+        if (!player || !toggleBtn) return;
+
+        const tracks = SETTINGS.musicTracks || [];
+        const track = tracks[0];
+        if (!track) { player.style.display = 'none'; return; }
+
+        const audio = new Audio();
+        audio.loop = true;
+        audio.volume = 0.75;
+        audio.preload = 'metadata';
+        audio.src = track.src;
+
+        let isPlaying = false;
+
+        // ── Populate cover & meta ───────────────────────────────
+        if (coverImg && track.cover) {
+          coverImg.src = track.cover;
+          coverImg.alt = track.title || 'Album cover';
+        } else if (coverImg) {
+          // No cover image — show a styled gradient placeholder
+          coverImg.style.display = 'none';
+          const coverWrap = player.querySelector('.music-player__cover-wrap');
+          if (coverWrap) {
+            coverWrap.style.background = 'linear-gradient(155deg, rgba(62,198,224,0.3), rgba(4,28,50,0.95))';
+            coverWrap.style.display = 'flex';
+            coverWrap.style.alignItems = 'center';
+            coverWrap.style.justifyContent = 'center';
+            coverWrap.innerHTML = '<svg viewBox="0 0 24 24" fill="rgba(143,227,240,0.5)" width="40" height="40"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>';
+          }
+        }
+        if (titleEl) titleEl.textContent = track.title || 'Play music';
+        if (artistEl) artistEl.textContent = track.artist || '';
+
+        // ── Time ────────────────────────────────────────────────
+        audio.addEventListener('loadedmetadata', () => {
+          if (timeDur) timeDur.textContent = fmt(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+          if (!audio.duration) return;
+          const pct = (audio.currentTime / audio.duration) * 100;
+          if (progressFill) progressFill.style.width = pct + '%';
+          if (timeCur) timeCur.textContent = fmt(audio.currentTime);
+        });
+
+        // ── Seek on click ────────────────────────────────────────
+        if (progressBar) {
+          progressBar.addEventListener('click', (e) => {
+            if (!audio.duration) return;
+            const rect = progressBar.getBoundingClientRect();
+            const ratio = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = ratio * audio.duration;
+          });
+        }
+
+        // ── Playback UI ──────────────────────────────────────────
+        function iconPlay() { return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'; }
+        function iconPause() { return '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>'; }
+
+        function setPlayingUI(playing) {
+          isPlaying = playing;
+          player.classList.toggle('is-playing', playing);
+          toggleBtn.innerHTML = playing ? iconPause() : iconPlay();
+          toggleBtn.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+        }
+
+        async function play() {
+          try {
+            if (audio.currentTime === 0 && track.startTime) {
+              audio.currentTime = track.startTime;
+            }
+            await audio.play();
+            setPlayingUI(true);
+          } catch (err) {
+            console.warn('[music] blocked:', err.message);
+            setPlayingUI(false);
+          }
+        }
+
+        function pause() {
+          audio.pause();
+          setPlayingUI(false);
+        }
+
+        // global play for pin lock
+        window.playOceanMusic = () => {
+          if (!isPlaying) play();
+        };
+
+        // ── Listen to pin unlocked event ─────────────────────────
+        window.addEventListener('pinUnlocked', () => {
+          window.playOceanMusic();
+        });
+
+        // ── Handle browser autoplay policy by playing on first interaction
+        const unlockAudio = () => {
+          if (!isPlaying) {
+            window.playOceanMusic();
+          }
+          document.removeEventListener('click', unlockAudio);
+          document.removeEventListener('touchstart', unlockAudio);
+          document.removeEventListener('scroll', unlockAudio);
+        };
+
+        document.addEventListener('click', unlockAudio, { once: true });
+        document.addEventListener('touchstart', unlockAudio, { once: true });
+        document.addEventListener('scroll', unlockAudio, { once: true });
+
+        // ── FAB toggle ───────────────────────────────────────────
+        if (fabBtn) {
+          fabBtn.addEventListener('click', () => {
+            const isOpen = player.classList.toggle('is-open');
+            fabBtn.setAttribute('aria-expanded', isOpen);
+            player.querySelector('.music-player__card')?.setAttribute('aria-hidden', !isOpen);
+            if (fabIconNote) fabIconNote.style.display = isOpen ? 'none' : '';
+            if (fabIconClose) fabIconClose.style.display = isOpen ? '' : 'none';
+          });
+        }
+
+        // ── Controls ─────────────────────────────────────────────
+        toggleBtn.addEventListener('click', () => {
+          if (isPlaying) pause(); else play();
+        });
+
+        // Prev/Next: lagu cuma 1, restart dari awal
+        if (prevBtn) prevBtn.addEventListener('click', () => { audio.currentTime = track.startTime || 0; if (!isPlaying) play(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { audio.currentTime = track.startTime || 0; if (!isPlaying) play(); });
+
+        window.addEventListener('pagehide', () => { if (isPlaying) audio.pause(); });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMusic);
+      } else {
+        initMusic();
+      }
+
+    })(window, document);
+    /**
+     * navigation.js
+     * Navbar active-link tracking + mobile drawer open/close.
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+
+      function initNavigation() {
+        const navLinks = document.querySelectorAll('.navbar__link');
+        const drawerLinks = document.querySelectorAll('.nav-drawer__link');
+        const menuBtn = document.querySelector('.navbar__menu-btn');
+        const closeBtn = document.querySelector('.nav-drawer__close');
+        const drawer = document.querySelector('.nav-drawer');
+
+        function setActive(sectionId) {
+          const hasMatchingLink = Array.from(navLinks).some(
+            (link) => link.getAttribute('data-scroll-to') === sectionId
+          );
+          // Sections like "ending" intentionally have no navbar link of their own —
+          // keep whichever link was last active rather than clearing the indicator,
+          // so it doesn't look like navigation broke right as the page concludes.
+          if (!hasMatchingLink) return;
+
+          navLinks.forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('data-scroll-to') === sectionId);
+          });
+          drawerLinks.forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('data-scroll-to') === sectionId);
+          });
+        }
+
+        OCEAN.bus.on('section:change', setActive);
+        // Sync immediately on boot too — if the page loads already "at" the
+        // default section, smooth-scroll.js's change-detection has nothing to
+        // diff against and may never emit, so don't rely on that alone.
+        setActive(OCEAN.state.currentSection);
+
+        function openDrawer() {
+          if (!drawer) return;
+          drawer.classList.add('is-open');
+          document.body.classList.add('no-scroll');
+          menuBtn?.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeDrawer() {
+          if (!drawer) return;
+          drawer.classList.remove('is-open');
+          document.body.classList.remove('no-scroll');
+          menuBtn?.setAttribute('aria-expanded', 'false');
+        }
+
+        menuBtn?.addEventListener('click', openDrawer);
+        closeBtn?.addEventListener('click', closeDrawer);
+        OCEAN.bus.on('nav:close', closeDrawer);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeDrawer();
+        });
+
+        drawer?.addEventListener('click', (e) => {
+          if (e.target === drawer) closeDrawer();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNavigation);
+      } else {
+        initNavigation();
+      }
+    })(window, document);
+
+
+
+    /**
+     * particles.js
+     * Single canvas-based system for ambient bubbles + drifting motes.
+     * Replaces what would otherwise be 3-4 separate DOM-animation systems —
+     * one rAF loop, one canvas, scaled by perf tier. This is the main reason
+     * the page stays smooth on low-end mobile devices.
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+
+      function initParticles() {
+        const canvas = document.getElementById('oceanCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d', { alpha: true });
+
+        const tier = OCEAN.config.perfTier;
+        if (tier === 'off') {
+          canvas.style.display = 'none';
+          return;
+        }
+
+        const COUNTS = { low: 45, mid: 80, high: 140 };
+        const particleCount = COUNTS[tier] || 60;
+
+        let width, height, dpr;
+        let particles = [];
+        let rafId = null;
+        let running = true;
+
+        function resize() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = window.innerWidth;
+          height = window.innerHeight;
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function makeParticle() {
+          const isBubble = Math.random() > 0.15; // 85% chance to be a bubble
+          return {
+            x: Math.random() * width,
+            y: height + Math.random() * height,
+            r: isBubble ? OCEAN.utils.rand(2, 8) : OCEAN.utils.rand(0.6, 2.2),
+            speed: isBubble ? OCEAN.utils.rand(16, 40) : OCEAN.utils.rand(5, 15),
+            drift: OCEAN.utils.rand(-14, 14),
+            sway: OCEAN.utils.rand(0.4, 1.2),
+            phase: Math.random() * Math.PI * 2,
+            alpha: isBubble ? OCEAN.utils.rand(0.3, 0.7) : OCEAN.utils.rand(0.3, 0.68),
+            isBubble
+          };
+        }
+
+        function seed() {
+          particles = Array.from({ length: particleCount }, makeParticle);
+        }
+
+        let lastT = performance.now();
+        function tick(t) {
+          if (!running) return;
+          const dt = Math.min((t - lastT) / 1000, 0.05);
+          lastT = t;
+
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.phase += dt * p.sway;
+            p.y -= p.speed * dt;
+            const x = p.x + Math.sin(p.phase) * 10;
+
+            if (p.y < -20) {
+              particles[i] = makeParticle();
+              particles[i].y = height + 10;
+              continue;
+            }
+
+            ctx.beginPath();
+            if (p.isBubble) {
+              ctx.arc(x, p.y, p.r, 0, Math.PI * 2);
+              const grad = ctx.createRadialGradient(x - p.r * 0.3, p.y - p.r * 0.3, 0, x, p.y, p.r);
+              grad.addColorStop(0, `rgba(255,255,255,${p.alpha})`);
+              grad.addColorStop(0.7, `rgba(143,227,240,${p.alpha * 0.35})`);
+              grad.addColorStop(1, 'rgba(143,227,240,0)');
+              ctx.fillStyle = grad;
+              ctx.fill();
+              ctx.lineWidth = 0.6;
+              ctx.strokeStyle = `rgba(244,249,255,${p.alpha * 0.4})`;
+              ctx.stroke();
+            } else {
+              ctx.arc(x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(143,227,240,${p.alpha})`;
+              ctx.fill();
+            }
+          }
+
+          rafId = requestAnimationFrame(tick);
+        }
+
+        function start() {
+          if (rafId) return;
+          running = true;
+          lastT = performance.now();
+          rafId = requestAnimationFrame(tick);
+        }
+
+        function stop() {
+          running = false;
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+
+        resize();
+        seed();
+        start();
+
+        window.addEventListener('resize', OCEAN.utils.debounce(() => {
+          resize();
+          seed();
+        }, 250));
+
+        // Pause when tab hidden — saves battery, no visible gap on return.
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) stop(); else start();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticles);
+      } else {
+        initParticles();
+      }
+    })(window, document);
+
+    /**
+     * pin-lock.js
+     * Gatekeeper screen shown before the site is revealed.
+     * PIN is set in /config/settings.js — do not edit this file.
+     *
+     * Deliberately has zero dependencies on config.js/OCEAN so it can never be
+     * blocked by anything else failing to load — the lock always works.
+     */
+    (function (window, document) {
+      'use strict';
+
+      // PIN comes from config/settings.js (loaded before this file in index.html)
+      var PIN_VALUE = String(window.WEBSITE_PIN || '0000');
+      var PIN_LENGTH = Math.min(6, Math.max(4, PIN_VALUE.length));
+      var STORAGE_KEY = 'oceanPinUnlocked';
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function ready(fn) {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', fn);
+        } else {
+          fn();
+        }
+      }
+
+      ready(function init() {
+        var lock = document.getElementById('pinLock');
+        if (!lock) return;
+
+        // Always show the PIN lock on every visit/refresh — no session caching.
+
+        var card = lock.querySelector('.pin-lock__card');
+        var digitsWrap = lock.querySelector('.pin-lock__digits');
+        var input = lock.querySelector('.pin-lock__hidden-input');
+        var errorEl = lock.querySelector('.pin-lock__error');
+        var form = lock.querySelector('.pin-lock__form');
+
+        if (!card || !digitsWrap || !input || !form) return;
+
+        input.setAttribute('maxlength', String(PIN_LENGTH));
+
+        // Build digit boxes dynamically from PIN_LENGTH
+        var boxes = [];
+        for (var i = 0; i < PIN_LENGTH; i++) {
+          var box = document.createElement('span');
+          box.className = 'pin-digit';
+          var dot = document.createElement('span');
+          dot.className = 'pin-digit__dot';
+          box.appendChild(dot);
+          digitsWrap.appendChild(box);
+          boxes.push(box);
+        }
+
+        setLocked(true);
+
+        function setLocked(state) {
+          document.documentElement.classList.toggle('pin-locked', state);
+          var siblings = document.body.children;
+          for (var s = 0; s < siblings.length; s++) {
+            var el = siblings[s];
+            if (el === lock) continue;
+            if (state) {
+              el.setAttribute('inert', '');
+              el.setAttribute('aria-hidden', 'true');
+            } else {
+              el.removeAttribute('inert');
+              el.removeAttribute('aria-hidden');
+            }
+          }
+        }
+
+        function render() {
+          var val = input.value;
+          boxes.forEach(function (box, idx) {
+            box.classList.toggle('is-filled', idx < val.length);
+            box.classList.toggle('is-active', idx === val.length);
+          });
+        }
+
+        function clearError() {
+          card.classList.remove('is-error');
+          errorEl && errorEl.classList.remove('is-visible');
+        }
+
+        function shakeError() {
+          clearError();
+          input.value = '';
+          render();
+          void card.offsetWidth;
+          card.classList.add('is-error');
+          errorEl && errorEl.classList.add('is-visible');
+
+          var onEnd = function () {
+            card.classList.remove('is-error');
+            card.removeEventListener('animationend', onEnd);
+          };
+          card.addEventListener('animationend', onEnd);
+
+          setTimeout(function () {
+            try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+          }, reducedMotion ? 30 : 80);
+        }
+
+        function unlock() {
+          input.blur();
+          card.classList.add('is-success');
+          try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) { }
+
+          window.dispatchEvent(new Event('pinUnlocked'));
+
+          var revealDelay = reducedMotion ? 150 : 850;
+          setTimeout(function () {
+            lock.classList.add('is-unlocked');
+            setLocked(false);
+            setTimeout(function () {
+              if (lock.parentNode) lock.parentNode.removeChild(lock);
+            }, reducedMotion ? 0 : 850);
+          }, revealDelay);
+        }
+
+        function attemptUnlock() {
+          var val = input.value.replace(/\D/g, '');
+          if (val.length !== PIN_LENGTH || val !== PIN_VALUE) {
+            shakeError();
+            return;
+          }
+          unlock();
+        }
+
+        input.addEventListener('input', function () {
+          input.value = input.value.replace(/\D/g, '').slice(0, PIN_LENGTH);
+          clearError();
+          render();
+          if (input.value.length === PIN_LENGTH) attemptUnlock();
+        });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          attemptUnlock();
+        });
+
+        lock.addEventListener('pointerdown', function (e) {
+          if (!card.contains(e.target) || e.target === card) {
+            input.focus({ preventScroll: true });
+          }
+        });
+
+        render();
+        setTimeout(function () {
+          try { input.focus({ preventScroll: true }); } catch (e) { }
+        }, reducedMotion ? 0 : 450);
+      });
+    })(window, document);
+
+
+    /**
+     * smooth-scroll.js
+     * Smooth-scroll engine + scroll-driven UI (progress bar, depth rail,
+     * active-section tracking, reveal-on-scroll animations).
+     *
+     * Design choice: rather than scroll-jacking (hijacking native scroll with a
+     * virtual scroll library, which is what made the old build feel "broken or
+     * uncomfortable"), this uses native scrolling with `scroll-behavior` for
+     * anchor jumps and a single rAF-throttled scroll listener for everything
+     * else. This keeps scrolling input-responsive (trackpad/wheel/touch all
+     * behave normally) while still producing a premium, animated feel.
+     */
+    (function (window, document) {
+      'use strict';
+
+      const OCEAN = window.OCEAN;
+      const { clamp, throttleRaf } = OCEAN.utils;
+
+      function initScroll() {
+        const progressBar = document.querySelector('.scroll-progress');
+        const depthFill = document.querySelector('.depth-rail__fill');
+        const depthValue = document.querySelector('.depth-rail__value');
+        const sections = OCEAN.config.sections
+          .map((s) => ({ ...s, el: document.getElementById(s.id) }))
+          .filter((s) => s.el);
+
+        const maxDepthMeters = 40; // purely cosmetic — "surface" to "ending" depth
+
+        function getDocHeight() {
+          return Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        }
+
+        function updateOnScroll() {
+          const scrollY = window.scrollY;
+          const docHeight = getDocHeight();
+          const pct = clamp(scrollY / docHeight, 0, 1);
+
+          if (progressBar) progressBar.style.width = `${pct * 100}%`;
+
+          if (depthFill) depthFill.style.height = `${pct * 100}%`;
+          if (depthValue) {
+            const meters = Math.round(pct * maxDepthMeters);
+            depthValue.textContent = `${meters}m`;
+            OCEAN.state.scrollDepthMeters = meters;
+          }
+
+          // Active section detection — midpoint-of-viewport method, cheap and robust.
+          const probeY = scrollY + window.innerHeight * 0.4;
+          let active = sections[0];
+          for (const s of sections) {
+            if (s.el.offsetTop <= probeY) active = s;
+          }
+          if (active && active.id !== OCEAN.state.currentSection) {
+            OCEAN.state.currentSection = active.id;
+            OCEAN.bus.emit('section:change', active.id);
+          }
+
+          // Navbar background toggle
+          const navbar = document.querySelector('.navbar');
+          if (navbar) navbar.classList.toggle('is-scrolled', scrollY > 24);
+        }
+
+        const onScroll = throttleRaf(updateOnScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', OCEAN.utils.debounce(updateOnScroll, 200));
+        updateOnScroll();
+
+        // Smooth anchor navigation for nav links / buttons with data-scroll-to
+        document.addEventListener('click', (e) => {
+          const trigger = e.target.closest('[data-scroll-to]');
+          if (!trigger) return;
+          e.preventDefault();
+          const targetId = trigger.getAttribute('data-scroll-to');
+          const targetEl = document.getElementById(targetId);
+          if (!targetEl) return;
+          const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 76;
+          const top = targetEl.getBoundingClientRect().top + window.scrollY - navH + 1;
+          window.scrollTo({ top, behavior: OCEAN.config.prefersReducedMotion ? 'auto' : 'smooth' });
+          OCEAN.bus.emit('nav:close');
+        });
+
+        initRevealObserver();
+      }
+
+      /**
+       * IntersectionObserver-driven reveal system. Elements with `.reveal`,
+       * `.memory-item`, `.gallery__item`, or `.wish-card` get `.is-visible`
+       * added once they cross the threshold — animation itself lives in CSS,
+       * keeping this module purely about *timing*, not visual style.
+       */
+      function initRevealObserver() {
+        const targets = document.querySelectorAll(
+          '.reveal, .reveal-stagger, .memory-item, .gallery__item, .wish-card'
+        );
+        if (!targets.length) return;
+
+        if (OCEAN.config.prefersReducedMotion) {
+          targets.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.18, rootMargin: '0px 0px -60px 0px' }
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScroll);
+      } else {
+        initScroll();
+      }
+    })(window, document);
+  </script>
+</body>
+
+</html>
